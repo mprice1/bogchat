@@ -6,25 +6,27 @@ var beeper = {
     // init localstorage settings
     beeper.events()
     beeper.fs.init()
+    beeper.handler.init()
     // send request to fetch history
     // create events
   },
   
   ui: {
     create: () => {
-      $('body').append('<div id="beeper"></div>')
-      $('#beeper').append(
-       `<div class="indigloscreen"></div>
-        <div class="ledscreen">
-          <div id="beeperleda">QLOPPI Mi-Yu</div>
-          <div id="beeperledb">Beeper Service</div>
-        </div>
-        <button class="left"></button>
-        <button class="right"></button>
-        <button class="up"></button>
-        <button class="down"></button>
-        <button class="menu"></button>
-        <button class="indiglo"></button>`
+      $('body').append(
+       `<div id="beeper">
+          <div class="indigloscreen"></div>
+          <div class="ledscreen">
+            <div id="beeperleda"></div>
+            <div id="beeperledb"></div>
+          </div>
+          <button class="left"></button>
+          <button class="right"></button>
+          <button class="up"></button>
+          <button class="down"></button>
+          <button class="menu"></button>
+          <button class="indiglo"></button>
+        </div>`
       )
     },
     scale: {
@@ -36,12 +38,31 @@ var beeper = {
       }
     },
     display: {
-      data: {
-        a: () => {
+      
+      feeder: {
+        
+        data: {},
+        
+        feed: (e, target) => {
+          // scroll system 
+          // e => message
+          // target => a/b
+        },
+        
+        scroll: () => {
           
         },
-        b: () => {
-          
+        
+        timer: null,
+        
+      },
+      
+      data: {
+        a: (e) => {
+          $('#beeperleda').text(e)
+        },
+        b: (e) => {
+          $('#beeperledb').text(e)
         }
       },
       power: {
@@ -142,10 +163,76 @@ var beeper = {
     
   },
   
+  mode: null,
+  
   handler: {
+    
     init: () => {
+      beeper.mode = "init"
+      beeper.ui.display.data.a("Qloppi Mi-Yu")
+      beeper.ui.display.data.b("Beeper Services")
+    },
+    
+    messages: {
+      
+      init: () => {
+        
+        beeper.mode = "messages"
+        
+      },
+      
+      data: {
+      
+        history: (e) => {
+          // array of old messages
+        },
+        
+        incoming: (e) => {
+          // individual new message + chirp
+        },
+        
+        message: (e) => {
+          // handle new message
+        }
+      
+      },
+      
+      control: {
+        
+        next: () => {
+          
+        },
+        
+        previous: () => {
+          
+        }
+        
+      }
+      
+    },
+    
+    menu: {
+      
+      init: () => {
+        
+        beeper.mode = "menu"
+        
+      }
+      
+    },
+    
+    chime: {
+      
+      init: () => {
+        
+        beeper.mode = "chime"
+        
+      }
       
     }
+    
+    
+    
     // handle messages
 
     // indiglo QLOPPI Mi-Yu always-on(tm) technology
