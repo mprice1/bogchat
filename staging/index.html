@@ -11,24 +11,86 @@
     <div id="bogbox" contenteditable spellcheck="false"></div>
   </div>
 </div>
-<img src="http://i.imgur.com/uQKJCti.png">
+<p data-nick="bGlsamVzdXNtb3JkaW5v" data-id="239197"><span data-locale="U2FsdGVkX1+QVcmmb46U9x2oG6KY/hGwOv4YH4PqtqI=" class="nick" style="color:red">liljesusmordino</span>:  <img class="" data-src="http://i.imgur.com/Mv9TuqU.gif" draggable="true"  src="http://i.imgur.com/Mv9TuqU.gif"><span class="qwikbin"><span class="qwikbinicon" style="background-image:url(./css/image/qwikbin/bin3.png)" data-qwikbin="1"></span></span><ns></ns><img class="" data-src="http://i.imgur.com/oCSCYxO.jpg"  src="http://i.imgur.com/oCSCYxO.jpg"><span class="qwikbin"><span class="qwikbinicon" style="" data-qwikbin="1"></span></span> </p>
 
 
 <script>
 var undohistory = []
-var undoactive = false;
+var undoactive = false
+//var draglive = ""
 
 
 
-(function() {
+;(function() {
 
+  
+  // need comparative function
+  
+  function comparative(a,b) {
+    var a = a.replace(/\&nbsp\;/g," ")
+    var b = b.replace(/\&nbsp\;/g," ")
+    // seek from left, break on difference
+    // seek from right, break on difference
+    
+    console.log(a)
+    console.log(b)
+    var breakpoint = 0
+    for (i=0;i<b.length;i++) {
+      if (a[i] != b[i]) {
+        breakpoint = i
+        break
+      }
+    }
+    var chunklength = b.length - a.length
+    var chunk = b.substring(breakpoint,chunklength + breakpoint)
+    
+    if (chunk.substr(chunk.length - 4) == "<br>" ) {
+      chunk = chunk.slice(0,-4)
+    }
+    console.log(chunk)
+    // determine if it is a useful image -- otherwise return plaintext string
+    if (chunk.substring(0,5) == "<img ") {
+      console.log("useful image")
+      if ((chunk.match(/\</g) || []).length == 1 ) {
+        console.log("singular image")
+        var capture = new RegExp(` src\=((\"([^\"]+)\")|(\'([^\']+)\'))`, "giu")
+        var arr = capture.exec(chunk)
+        console.log(arr)
+        var match = arr[3] || arr[5]
+        if (match) {
+          console.log("match")
+          console.log(match)
+          var wrap = `<img class="bogboximage" src="${match}">`
+          var a = a.substring(0,breakpoint) + " " + wrap + " " + a.substring(breakpoint,a.length)
+          $('#bogbox').html(a)
+          return
+        }
+      } 
+    }
+    
+    console.log("return plaintext")
 
-
-  $('[contenteditable]').keypress(function (e) {
+    // return difference value and position of start and finish
+    
+  }
+  
+  $('#bogbox[contenteditable]').keypress(function (e) {
     if (e.keyCode == 10 || e.keyCode == 13) {
       e.preventDefault();
       // Submit the form, etc.
     }
+  })
+  .on("drop",(e)=> {
+    var pre = $('#bogbox').html()
+    
+    console.log(e)
+    setTimeout(()=>{
+      var post = $('#bogbox').html()
+      $('#bogbox').html(pre)
+      
+      comparative(pre,post)
+      
+    },0)
   })
   .keydown((e)=>{
     if (e.keyCode == 90 && e.ctrlKey ) {

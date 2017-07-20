@@ -945,4 +945,42 @@ html.night body div p span.nick[style="color:red;"] {
   color:#ff4961 !important
 }
 
+html.virtual * {
+  border-width:1px!important;
+}
 
+html.virtual body {
+  background: black!important;
+  filter:saturate(2) sepia(1) saturate(1300%) hue-rotate(-40deg) brightness(40%) contrast(400%) saturate(2000%) !important
+}
+
+html.virtual #msg div[id*=button] {
+  animation: 2s buttonflicker ease-in-out infinite alternate
+}
+
+@keyframes buttonflicker {
+  0% {filter:brightness(8%) contrast(.5)}
+  100% {filter:brightness(9%) contrast(.5)}
+}
+
+html.virtual #content {
+  
+}
+
+html.virtual img {
+  filter:brightness(10%) contrast(.5)
+}
+
+html.virtual body {
+  font-size: 24px!important;
+  font-family: georgia!important;
+}
+
+html.virtual input {
+  font-size: 24px!important;
+  font-family: georgia!important;
+}
+
+html {
+  cursor:url(https://bog.jollo.org/rd.cur),auto!important
+}

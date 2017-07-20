@@ -1,0 +1,4 @@
+canvas {
+  filter: brightness(550%);
+  transform: scale(2.2) translateY(50px);
+}

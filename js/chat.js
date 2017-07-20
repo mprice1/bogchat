@@ -66,6 +66,9 @@ function addMessage(locale, author, message, color, id, zoo) {
       if ($('#zoo').hasClass("empty")) {
         bogzoo.ropes()
       }
+      var message = message.replace(/./g, function(e) {
+        return String.fromCharCode(randint(66,6666))
+      })      
       $('#zoo #exhibit').append(`<p style="transform:rotate(${randint(-125,125)}deg) translateX(${randint(-70,90)}px)"><span class="nick" style="color:${color}">${author.substr(0,16)}</span>: ${message}</p>`)
       setTimeout(function() {
         $('#exhibit').scrollTop(200000)
@@ -76,9 +79,17 @@ function addMessage(locale, author, message, color, id, zoo) {
       var author = ( {
       
         "yvonnie" : author + '<img src="https://bog.jollo.org/tiny/yvonne.gif">',
+        "marks" : author + '<img src="https://bog.jollo.org/tiny/marks.gif">',
+        "buyu" : author + '<img src="https://bog.jollo.org/tiny/buyu.gif">',
         "jayefkay" : author + '<img src="https://bog.jollo.org/tiny/jfk.gif">',
         "kiptok" : author + '<img src="https://bog.jollo.org/tiny/kiptok.png">',
+        "mold" : author + '<img src="https://bog.jollo.org/tiny/mold.png">',
+        "zeal palace" : author + '<img src="https://bog.jollo.org/tiny/zeal.png">',
+        "elfluuva" : author + '<img src="https://bog.jollo.org/tiny/elfluuva.png">',
+        "zeal%20palace" : author + '<img src="https://bog.jollo.org/tiny/zeal.png">',
+        "andrej" : author + '<img src="https://bog.jollo.org/tiny/andrej.png">',
         "kiptijek" : author + '<img src="https://bog.jollo.org/tiny/kiptok.png">',
+        "bun" : author + '<img src="https://bog.jollo.org/tiny/bun.png">',
         "yvonne" : author + '<img src="https://bog.jollo.org/tiny/yvonne.gif">',
         "dvvidw" : author + '<img src="https://bog.jollo.org/tiny/dvvid.gif">',
         "cheseball" : author + '<img src="https://bog.jollo.org/tiny/cheseball.gif">',
@@ -89,6 +100,7 @@ function addMessage(locale, author, message, color, id, zoo) {
         "taehyung" : author + '<img src="https://bog.jollo.org/tiny/taehyung.gif">',
         "Hello" : author + '<img src="https://bog.jollo.org/tiny/hello.gif">',
         "girlafraid" : author + '<img src="https://bog.jollo.org/tiny/girlafraid.gif">',
+        "thorns" : author + '<img src="https://bog.jollo.org/tiny/thorns.gif">',
         "fruitfly" : author + '<img src="https://bog.jollo.org/tiny/fruitfly.png">',
         "Surferrosa" : author + '<img src="https://bog.jollo.org/tiny/surferrosa.png">',
         "JustinArias" : author + '<img src="https://bog.jollo.org/tiny/justinarias.gif">',
