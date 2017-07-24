@@ -7,7 +7,8 @@
 }
 
 body {
-  background:black
+  background:white;
+
 }
 
 #beeper {
@@ -17,6 +18,20 @@ body {
   position:fixed;
   bottom:0;
   right:0;
+  transition:transform .3s ease-in-out;
+  transform-origin: top left
+}
+
+#beeper.taehyung {
+  transform: scale(.7)
+}
+
+#beeper.upscale.taehyung:hover {
+  transform:scale(1)
+}
+
+#beeper.disabled {
+  pointer-events:none
 }
 
 html.day #beeper {
@@ -24,18 +39,19 @@ html.day #beeper {
 }
 
 html.night #beeper {
-  background:url(./image/beeper.png)
+  background:url(./image/beeper.png);
+  background-position:-355px 0;
 }
 
 #beeper .indigloscreen {
   width:208px;
-  height:66px;
+  height:67px;
   position:absolute;
-  top:50px;
+  top:49px;
   left:56px;
   z-index:33;
   background:url(./image/beeper.png);
-  background-position:-714px -156px;
+  background-position:-714px -155px;
   opacity:0;
   transition:.04s ease-in-out;
   animation: 3s beeperflicker infinite;
@@ -109,7 +125,7 @@ html.night #beeper {
   border-radius:0 0 20px 0;  
 }
 
-#beeper .indiglo {
+#beeper .home {
   top:179px;
   left:264px;
   width:55px;
@@ -119,16 +135,17 @@ html.night #beeper {
 }
 
 #beeper .ledscreen {
-  z-index:34;
-  width:188px;
-  height:52px;
-  position:absolute;
-  top:58px;
-  opacity:1;
-  left:67px;
-  transform-origin:top left;
-  transform:rotate(-.16deg);
-  filter:contrast(105%)
+  z-index: 34;
+  width: 195px;
+  height: 52px;
+  position: absolute;
+  top: 58px;
+  opacity: 1;
+  left: 64px;
+  transform-origin: top left;
+  transform: rotate(-.16deg);
+  filter: contrast(105%);
+  user-select:none
 }
 
 #beeper .ledscreen > div {
@@ -137,13 +154,18 @@ html.night #beeper {
   height:25px;
   width:100%;
   font-family:'px437_wyse700b-2yregular';
-  color:#22303e;
   font-size:24px;
   pointer-events:none;
   cursor:default;
+  color: rgba(34, 48, 62, 0.91);
   text-shadow:2px 2px 1px rgba(0,0,0,.19);
   overflow:hidden;
   white-space:pre
+}
+
+html.night #beeper .ledscreen > div {
+    color:#000;
+  text-shadow:2px 2px 1px rgba(0,0,0,.3);
 }
 
 #beeper .indigloscreen.on + .ledscreen > div {
@@ -159,4 +181,24 @@ html.night #beeper {
 
 #beeperledb {
   top:28px;
+}
+
+#beeperdragpoint {
+  position:absolute;
+  top:177px;
+  background:red;
+  left:35px;
+  border-radius:20px;
+  width:40px;
+  height:40px;
+  z-index:9999;
+}
+
+.noselect{
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
 }

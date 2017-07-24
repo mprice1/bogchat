@@ -1,8 +1,12 @@
 <!doctype html>
-<html class="night">
+<html class="day">
 <head>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-
+<script
+  src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+  integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+  crossorigin="anonymous"></script>
+  
 <link rel="stylesheet" href="css/beeper.css?3" type="text/css">
 </head>
 <body bgcolor="#000">
@@ -14,6 +18,14 @@
 </script>
 </body>
 <script src="js/beeper.js"></script>
+
+
+<script>
+    $( function() {
+      $( "#beeper" ).draggable();
+  } );   
+</script>
+
 <script>
 // livereloadx ~ localhost
 if (window.location.origin == "http://localhost:8080") {
