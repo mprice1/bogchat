@@ -1,22 +1,21 @@
 "use strict";
-require('dotenv').config()
-process.title = 'node-chat-staging';
 
-var http = require('http');
-const xrequest = require('request');
+require('dotenv').config()
+process.title = 'node-chat-staging'
+
+var http = require('http')
+const xrequest = require('request')
 
 // mysql
-
-var mysql = require('mysql');
+var mysql = require('mysql')
 var pool  = mysql.createPool({
   host     : 'localhost',
   user     : 'admin',
   password : process.env.sql,
   database : 'bogchat'
-});
+})
 
 // jollo radio
-
 var WebSocket = require('ws')
   , ws
   
@@ -35,7 +34,6 @@ function wsradioreconnect() {
   clearInterval(wsheartbeat)
   ws.close()
   setTimeout(function() {
-    // uncomment
     // reconnect in 3 minutes
     wsradioconnect()
   },180000)
@@ -60,11 +58,9 @@ ws.on('open', function() {
   clearInterval(wsheartbeat)
   wssend(0)
   setTimeout(function(){
-    //console.log("wssend1")
     wssend(1)
   },500)
   wsheartbeat = setInterval(function(){
-    //console.log("wssend2")
     wssend(2)
   },20000)
 })
@@ -98,7 +94,6 @@ function wstrackchange(e) {
     return
   }
   // send signal to open everyones audio player if its not already open
-  
   function validateyoutubeurl(url) {
     if (url != undefined || url != '') {
       var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
@@ -234,7 +229,6 @@ ws.on('message', function(message) {
               payload: 'remain',
               remain: remain
             })
-            
           }
           else {
             console.log("server error")
@@ -260,12 +254,6 @@ ws.on('message', function(message) {
           wstrackchange(false)
         }
       }
-      else {
-        // console.log("server error")
-      }
-    }
-    else {
-      // console.log("heartbeat")
     }
   }
   else {
@@ -273,11 +261,12 @@ ws.on('message', function(message) {
   }
 });
 
-var webSocketsServerPort = 1337;
+var webSocketsServerPort = 1337
+var beepport = 2834
 
-var webSocketServer = require('websocket').server;
-var SHA256 = require("crypto-js/sha256");
-var CryptoJS = require("crypto-js");
+var webSocketServer = require('websocket').server
+var SHA256 = require("crypto-js/sha256")
+var CryptoJS = require("crypto-js")
 
 // jollo irc
 
@@ -324,8 +313,8 @@ function uniquepush(item, oldarray) {
 }
 
 //if (typeof localStorage === "undefined" || localStorage === null) {
-  var LocalStorage = require('node-localstorage').LocalStorage;
-  var localStorage = new LocalStorage('./scratch');
+var LocalStorage = require('node-localstorage').LocalStorage
+var localStorage = new LocalStorage('./scratch')
 //}
 
 // var feedpeach = 0
@@ -369,7 +358,7 @@ if (localStorage.getItem('increment') ) {
   increment = JSON.parse(localStorage.getItem('increment'))
 }
 
-function mysql_real_escape_string(str) {
+function mres(str) {
   return str.replace(/[\0\x08\x09\x1a\n\r"'\\\%]/g, function(char) {
     switch (char) {
       case "\0":
@@ -394,6 +383,7 @@ function mysql_real_escape_string(str) {
 }
 
 function richtext(input) {
+  console.log(input)
   var matches = []
   function checkimgurl(url) {
     return(url.match(/^https?\:\/\/.+\/.+\.(jpeg|jpg|gif|png|bmp|JPEG|JPG|GIF|PNG|BMP)$/) != null)
@@ -405,10 +395,11 @@ function richtext(input) {
       matches.push(word)
     }
   }
+
   return matches
 }
 
-function isJSON(str) {
+function tryjson(str) {
   try {
     JSON.parse(str);
   } catch (e) {
@@ -418,16 +409,29 @@ function isJSON(str) {
 }
 
 function htmlEntities(str) {
-  return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;').replace(/'/g, '&apos;').replace(/"/g, '&quot;').substring(0,30000)
+  return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/'/g, '&apos;')
+          .replace(/"/g, '&quot;')
+          .substring(0,30000)
 }
 
-var server = http.createServer(function(request, response) {
+function beepEntities(str) {
+  return String(str)
+          .replace(/&/g, '+')
+          .replace(/</g, '(')
+          .replace(/>/g, ')')
+          .replace(/'/g, '`')
+          .replace(/"/g, '`')
+          .substring(0,30000)
+}
 
-})
+var server = http.createServer(function(request, response) {})
 
 server.listen(webSocketsServerPort, function() {
-  console.log((new Date()) + " Server is listening on port " + webSocketsServerPort);
+  console.log("Bogchat websocket server is listening on port " + webSocketsServerPort)
 });
 
 var wsServer = new webSocketServer({
@@ -444,27 +448,19 @@ client.addListener('message', (...a) => {
 
 wsServer.on('request', function(request) {
   
-  
   function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+    var currentIndex = array.length, temporaryValue, randomIndex
 
-    // While there remain elements to shuffle...
     while (0 !== currentIndex) {
-
-      // Pick a remaining element...
-      randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex -= 1;
-
-      // And swap it with the current element.
-      temporaryValue = array[currentIndex];
-      array[currentIndex] = array[randomIndex];
-      array[randomIndex] = temporaryValue;
+      randomIndex = Math.floor(Math.random() * currentIndex)
+      currentIndex -= 1
+      temporaryValue = array[currentIndex]
+      array[currentIndex] = array[randomIndex]
+      array[randomIndex] = temporaryValue
     }
-
     return array;
   }
   
-  //var colors = [ 'red', '#2f8aff', 'blue', 'purple', 'magenta', 'coral', 'blue', 'purple', 'coral', 'orangered', '#ffa2b2', 'magenta', 'purple', 'coral', 'orangered', '#ce2cff', '#a30077', '#85cb00', '#9c8bc6' ];
   var colors = [ 'red', 'blue', 'purple', 'magenta', 'coral', 'blue', 'orangered'];
   colors = shuffle(colors)
 
@@ -485,33 +481,26 @@ wsServer.on('request', function(request) {
   if (history.length > 0) {
     connection.sendUTF(JSON.stringify( { type: 'history', data: history} ));
   }
-  else {
-    console.log("why isnt there any history")
-  }
 
   connection.on('message', function(message) {
-    
     if (bannedips.indexOf(connection.remoteAddress) > -1) {
       return
     }
-    
     var zooflag = false
     if (zooips.indexOf(connection.remoteAddress) > -1) {
       zooflag = true
     }
-    
     var shadowflag = false
     if (shadowips.indexOf(connection.remoteAddress) > -1) {
       shadowflag = true
     }
-    //console.log(JSON.stringify(message))
     if (message.type === 'utf8') {
       
       if (userName === false) {
-        if ( isJSON(message.utf8Data)) {
+        if ( tryjson(message.utf8Data)) {
           var parsed = JSON.parse(message.utf8Data)
           if (parsed.type == "nick" ) {
-            userName = htmlEntities(encodeURIComponent(parsed.data))
+            userName = encodeURIComponent(htmlEntities(parsed.data))
             userName = userName.substring(0,100)
             userColor = colors[0];
 
@@ -523,16 +512,14 @@ wsServer.on('request', function(request) {
         }
       }
       else {
-        if ( isJSON(message.utf8Data) ) {
+        if ( tryjson(message.utf8Data) ) {
           var parsed = JSON.parse(message.utf8Data)
           
           ;(({
             message: () => {
-
               increment++
-
               var thistime = (new Date()).getTime()
-              var thismessage = htmlEntities(encodeURIComponent(parsed.data))
+              var thismessage = encodeURIComponent(htmlEntities(parsed.data))
               var thislocale = CryptoJS.AES.encrypt(connection.remoteAddress, process.env.aes).toString()
               var obj = {
                 time: thistime,
@@ -543,25 +530,28 @@ wsServer.on('request', function(request) {
                 locale: thislocale,
                 id: increment
               }
-              
               if (!zooflag && !shadowflag) {
                 history.push(obj);
                 history = history.slice(-100);
                 localStorage.setItem('history', JSON.stringify(history))
               }
               localStorage.setItem('increment', increment)
-
               var ctime = parseInt((+ new Date()).toString().slice(0,-3))
-              var matches = richtext(thismessage).slice(0,10)
-              
-              // mySQL
-              
+              var matches = richtext(decodeURIComponent(thismessage)).slice(0,10)
               if (!zooflag && !shadowflag) {
-                for (i=0;i<matches.length;i++) {
-                  pool.query('INSERT INTO bogchat (postid, username, context, ctime) VALUES ('+increment+', "'+mysql_real_escape_string(userName.toString().substring(0,100))+'", "'+mysql_real_escape_string(matches[i])+'", '+ctime+')', function (error, results, fields) {
-                    if (error) throw error;
-                  });
+                console.log("good got here its matches length" + matches.length)
+                for (var i=0;i<matches.length;i++) {
+                  pool.query('INSERT INTO bogchat (postid, username, context, ctime) VALUES ('+increment+', "'+mres(userName.toString().substring(0,100))+'", "'+mres(matches[i])+'", '+ctime+')', function (error, results, fields) {
+                    if (error) {
+                      throw error
+                    }
+                  })
                 }
+              }
+              else {
+                console.log("was zooflagged or shadowflagged so snub")
+                console.log("zooflag" + zooflag)
+                console.log("shadowflag" + shadowflag)
               }
               var json = JSON.stringify({ type:'message', data: obj })
               
@@ -577,7 +567,7 @@ wsServer.on('request', function(request) {
             drum: () => {
               increment++
               var thistime = (new Date()).getTime()
-              var thismessage = htmlEntities(encodeURIComponent(parsed.data))
+              var thismessage = encodeURIComponent(htmlEntities((parsed.data)))
               var thislocale = CryptoJS.AES.encrypt(connection.remoteAddress, process.env.aes).toString()
               var obj = {
                 time: thistime,
@@ -611,7 +601,7 @@ wsServer.on('request', function(request) {
             fav: () => {
               if ( parsed.data && !isNaN(parsed.data) ) {
                 if (parsed.data <= increment && parsed.data > 0 ) {
-                   pool.query('UPDATE bogchat SET favd = (CASE WHEN favd IS NULL THEN 0 ELSE favd END) + 1 WHERE postid = '+mysql_real_escape_string(parsed.data)+';', function (error, results, fields) {
+                   pool.query('UPDATE bogchat SET favd = (CASE WHEN favd IS NULL THEN 0 ELSE favd END) + 1 WHERE postid = '+mres(parsed.data)+';', function (error, results, fields) {
                      if (error) throw error;
                    });
                    if (zooflag || shadowflag) {
@@ -629,7 +619,6 @@ wsServer.on('request', function(request) {
               connection.sendUTF(JSON.stringify({ type:'pong', data: parsed.data }))
             },
             radioqueue: () => {
-              
               // prevent zoo users from using radio
               if (bannedips.indexOf(connection.remoteAddress) > -1) {
                 return
@@ -640,11 +629,9 @@ wsServer.on('request', function(request) {
               if (shadowips.indexOf(connection.remoteAddress) > -1) {
                 return
               }
-              
-              
               if (parsed.data) {
                 connection.sendUTF(JSON.stringify({ type:'status', data: ".." }));
-                client.say('fanfare', `api ${process.env.plinkoapi} msg #radio <${userName.substr(0,10)}> parsed.data`);
+                // client.say('fanfare', `api ${process.env.plinkoapi} msg #radio <${userName.substr(0,10)}> parsed.data`);
                 // if its one word and starts with http send just this word
                 // else if its multiple words do a query on it using youtube search..
                 // send the reply to plinko
@@ -670,6 +657,43 @@ wsServer.on('request', function(request) {
                 }
               }
             },
+            beeperhistoryrequest: () => {
+              pool.query(
+               `(
+                SELECT * 
+                FROM beeper 
+                ORDER BY id 
+                DESC LIMIT 200
+                ) 
+                ORDER BY id ASC`, 
+              (err,res)=>{
+                // need the id
+                if (res && res.length) {
+                  var messages = []
+                  for (var p = 0;p<res.length;p++) {
+                    var e = res[p]
+                    var message = {
+                      id: e.id,
+                      message: encodeURIComponent(beepEntities(e.message)),
+                      unread: true,
+                      sender: null,
+                      crypt: null,
+                      type: "message",
+                      ctime: ( + new Date(e.ctime) ),
+                      origin: "sms",
+                      private: false,
+                      mention: false,
+                      reserved: {}
+                    }
+                    messages.push(message)
+                  }
+                  connection.sendUTF(JSON.stringify({
+                    type:'beeperhistory', 
+                    data: messages 
+                  }))
+                }
+              })
+            },
             // feedpeach: () => {
             //   localStorage.setItem('xfeedpeach',++feedpeach)
             //   broadcast({
@@ -691,20 +715,21 @@ wsServer.on('request', function(request) {
             whatshot: () => {
               var yctime = (parseInt((+ new Date()).toString().slice(0,-3)) - 86400)
               pool.query('select * from bogchat where ctime > '+yctime+' and favd > 4', function (error, results, fields) {
-                if (error) throw error;
+                if (error) {
+                  return
+                }
                 connection.sendUTF(JSON.stringify({ type:'whatshot', data: results }))
               });
             },
             queryuser: () => {
               if (parsed.data) {
                 
-                var query = mysql_real_escape_string(parsed.data.substring(0,100))
+                var query = mres(parsed.data.substring(0,100))
                 pool.query('select * from bogchat where username = "'+query+'" order by rand() limit 10;', function (error, results, fields) {
                   if (error) throw error;
                   connection.sendUTF(JSON.stringify({ type:'queryuser', data: results }))
                 });            
               }
-              // var yctime = (parseInt((+ new Date()).toString().slice(0,-3)) - 86400)
             },
             radio: () => {
               connection.sendUTF(JSON.stringify({ type:'radio', payload: "power", power: wsplaystate }))
@@ -749,16 +774,13 @@ wsServer.on('request', function(request) {
               }
               else {
                 if (parsed.data && parsed.data.id) {
-                  // verify id is correct
                   if ( hashstringify(SHA256(parsed.data.id)) == process.env.sha ) {
                     if (parsed.data.command) {
-                      //console.log("good process " + parsed.data.command)
                       var n = parsed.data.command.split(" ");
                       (({
                         ban: () => {
                           n.splice(0,1)
                           n = n.join(" ")
-                          //console.log("lookup " + n)
                           uniquepush(n,bannedips)
                           localStorage.setItem("xbannedips",JSON.stringify(bannedips))
                         },
@@ -770,14 +792,12 @@ wsServer.on('request', function(request) {
                         zoo: () => {
                           n.splice(0,1)
                           n = n.join(" ")
-                          //console.log("lookup " + n)
                           uniquepush(n,zooips)
                           localStorage.setItem("xzooips",JSON.stringify(zooips))                        
                         },
                         shadow: () => {
                           n.splice(0,1)
                           n = n.join(" ")
-                          //console.log("lookup " + n)
                           uniquepush(n,shadowips)
                           localStorage.setItem("xshadowips",JSON.stringify(shadowips))                        
                         },
@@ -829,18 +849,79 @@ wsServer.on('request', function(request) {
   });
 
   connection.on('close', function(e) {
-
     for (var i = 0; i < clients.length; i ++) {
     if ((connection.remoteAddress == clients[i].remoteAddress) && (connection.socket._peername.port == clients[i].socket._peername.port)) {
-        //console.log("spliced")
         clients.splice(i, 1)
-      };
-    };
-    //colors.push(userColor);
-     // disabling sound.. revive in legacy
+      }
+    }
      var json = JSON.stringify({ type:'byebye' })
      for (var i=0; i < clients.length; i++) {
        clients[i].sendUTF(json)
      }
   })
+});
+
+var beepserver = http.createServer(function(request, response) {
+   let body = []
+    request.on('data', (chunk) => {
+      body.push(chunk)
+    }).on('end', () => {
+      body = Buffer.concat(body).toString()
+      //console.log(body)
+      if (tryjson(body)) {
+        let data = JSON.parse(body)
+        if ( !data.messageId
+          || !data["from"]
+          || !data.text
+          || !data.time
+          || !data.eventType
+          || data.eventType != "sms"
+          || data.text.length < 1 ) {
+          if (data["from"]) {
+            console.log("bad incoming from")
+            console.log(data["from"])
+          }
+          return
+        }
+        var message = data.text.substring(0,1000)
+        var telenum = data["from"].substring(0,60)
+        var sendername = "-"
+        var type = "message"
+        var origin = "sms"
+        var prv = 0
+        var messageid = data.messageId
+        // sql insert
+        pool.query(
+       `INSERT INTO beeper 
+        (message, telenum, sendername, type, origin, private, messageid) 
+        VALUES 
+        ("${mres(message)}", "${mres(telenum)}", "${mres(sendername)}", "${type}", "${origin}", ${prv}, "${mres(messageid)}")`, 
+        (err,res,fld)=>{
+          broadcast({
+            type: 'beepernew',
+            data: {
+              id: res.insertId,
+              message: encodeURIComponent(beepEntities(message)),
+              unread: true,
+              sender: null,
+              crypt: null,
+              type: "message",
+              ctime: (+ new Date()),
+              origin: "sms",
+              private: false,
+              mention: false,
+              reserved: {}
+            }
+          })
+        })
+      }
+    })
+   response.writeHead(204, { 
+      "Access-Control-Allow-Origin": "*"
+    })
+  response.end()
+})
+
+beepserver.listen(beepport, function() {
+  console.log('Qloppi Mi-Yu paging service working on http://localhost:' + beepport)
 })
