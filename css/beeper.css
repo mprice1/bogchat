@@ -143,7 +143,7 @@ html.night #beeper {
   opacity: 1;
   left: 64px;
   transform-origin: top left;
-  transform: rotate(-.16deg);
+  transform:  rotate(-.16deg);
   filter: contrast(105%);
   user-select:none
 }
@@ -157,7 +157,7 @@ html.night #beeper {
   font-size:24px;
   pointer-events:none;
   cursor:default;
-  color: rgba(34, 48, 62, 0.91);
+  color: rgba(34, 48, 62, 0.94);
   text-shadow:2px 2px 1px rgba(0,0,0,.19);
   overflow:hidden;
   white-space:pre

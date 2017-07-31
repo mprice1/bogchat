@@ -80,7 +80,7 @@ function dicepattern(object) {
 function handletape(command, data) {
   console.log("data")
   if (isJSON(atob(data))) {
-    var context = JSON.parse(atob(data))
+    var context = JSON.parse(atob(decodeURIComponent(data)))
     if (context.type == "drummachine") {
       var type = "drummachine"
       if (!isNaN(context.tempo)) {

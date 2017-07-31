@@ -138,8 +138,9 @@ function startwebsocket() {
       history: () => {
         for (var i = 0; i < json.data.length; i++) {
           if (json.data[i].drum) {
-            if (isJSON(atob(json.data[i].text))) {
-              var data = JSON.parse(atob(json.data[i].text))
+            console.log(json.data[i].text)
+            if (isJSON(atob(decodeURIComponent(json.data[i].text)))) {
+              var data = JSON.parse(atob(decodeURIComponent(json.data[i].text)))
               var image = data.image
               var backgroundcolor = data.color
               var ytid = null
@@ -282,6 +283,12 @@ function startwebsocket() {
       },
       list: () => {
         console.log(json.data)
+      },
+      beepernew: () => {
+        beeper.handler.messages.data.incoming(json.data)
+      },
+      beeperhistory: () => {
+        beeper.handler.messages.data.history(json.data)
       },
       // feedpeach: () => {
       //   hamster.fedpeach(json.data)

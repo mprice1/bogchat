@@ -15,12 +15,13 @@ let bogversion = 251
 <meta name="apple-mobile-web-app-capable" content="yes">
 
 <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r77/three.min.js"></script>
 <script>document.write('<script src="./js/mode.js?'+bogversion+'"><\/script>')</script>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
 
 <script>
-  var bogstyles = ["search","mobile","crawl","zoo","modem","bogchat","bin","bubbles","draw","drums","radio"]
+  var bogstyles = ["beeper","search","mobile","crawl","zoo","modem","bogchat","bin","bubbles","draw","drums","radio"]
   
   for (var f=0;f<bogstyles.length;f++) {
     document.write('<link rel="stylesheet" href="./css/'+bogstyles[f]+'.css?'+bogversion+'" type="text/css">')
@@ -154,7 +155,7 @@ let bogversion = 251
   <script src="./js/shared/util.js"></script>
 
   <script>
-    var bogmods = ["search","crawl","zoo","bin","modem","chat","radio","connect","actions","camera","images","breakapart","draw","bubbles","drums","pak","mobile"]
+    var bogmods = ["beeper","search","crawl","zoo","bin","modem","chat","radio","connect","actions","camera","images","breakapart","draw","bubbles","drums","pak","mobile"]
     
     for (var f=0;f<bogmods.length;f++) {
       document.write('<script src="./js/'+bogmods[f]+'.js?'+bogversion+'"><\/script>')
