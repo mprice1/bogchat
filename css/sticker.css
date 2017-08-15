@@ -1,0 +1,259 @@
+#stickerbox {
+  position: absolute;
+  right: 0px;
+  background: rgb(0, 0, 0);
+  box-shadow: 5px -5px 125px rgba(106, 0, 255, 0);
+  width: 350px;
+  height: 260px;
+  border-radius: 18px;
+  bottom: 40px;
+  transition: all .4s ease-in-out;
+  border-left-style: ridge;
+  border-right-style: ridge;
+  border-left-width: 14px;
+  border-right-color: rgba(139, 143, 158, 0.95);
+  border-right-width: 9px;
+  border-left-color: #9093a0;
+  box-shadow: 6px 5px 17px 0px rgba(0, 0, 0, 0.77);
+  overflow: hidden;
+}
+
+#stickerbox.cameraflash::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  animation: .25s cameraflash linear forwards;
+  top: 0;
+  left: 0;
+  z-index: 9999999;
+}
+
+@keyframes cameraflash {
+  0% {background:rgba(255,255,255,1)}
+  100% {background:rgba(255,255,255,0)}
+}
+
+#stickerbox * {
+  user-select:none
+}
+
+#stickerbox.disabled {
+  pointer-events:none
+}
+
+#stickerbox > div {
+  cursor:pointer;
+}
+
+html.radioplaying #stickerbox {
+  right: 300px;
+}
+
+
+body.image #stickerbox, body.draw #stickerbox {
+  bottom:245px
+}
+
+body.image.bigger #stickerbox {
+  bottom:440px
+}
+
+#stickerbox > div {
+  position:absolute;
+}
+
+#stickerbox video {
+  border:none
+}
+
+#stickerbox .picture video,
+#stickerbox .video video {
+  display:none
+}
+
+#stickerbox.picture .picture video,
+#stickerbox.video .video video {
+  display:block;
+  z-index: -1;
+}
+
+#stickerbox.video {
+  width:290px;
+  height:215px;
+}
+
+#stickerbox .picture video {
+  transform: scale(.89);
+  transform-origin: top left;  
+}
+
+#stickerbox .video video {
+  transform:scale(2.4);
+  transform-origin:top left;
+}
+
+#stickerbox .mode div {
+  width:19px;
+  height:60px;
+  position:relative;
+  border:3px outset white; 
+  background:rgb(216, 216, 216);
+}
+
+#stickerbox .mode div.active {
+  border:3px inset white;
+}
+
+#stickerbox .mode .picture::before {
+  content:'pic';
+}
+
+#stickerbox .mode .video::before {
+  content:'vid';
+}
+
+#stickerbox .mode .picture::before,
+#stickerbox .mode .video::before {
+  font-size:13px;
+  font-family:'times new roman';
+  color:black;
+  font-style:italic;
+  position:absolute;
+  left:1px;
+  top:6px;
+}
+
+#stickerbox .mode {
+  right:0;
+  bottom:0px;
+  z-index:999
+}
+
+
+#stickerbox .caption {
+  z-index:10;
+  right:0;
+  font-size:24px;
+  color:magenta
+}
+
+#stickerbox .caption.counting {
+  font-size: 38px;
+  background: #000000;
+  margin: 2px;
+  color: white!important;
+  text-shadow: 2px 2px 3px #0f003e;
+  padding: 10px 4px 10px 6px;
+  background: blue;
+  width: 50px;
+  text-align: center;
+
+  /* border-radius: 100px; */
+}
+
+#stickerbox .countdown {
+  padding:3px 0;
+  width:70px;
+  text-align:center;
+  font-size:11.5px;
+  border:3px outset white;
+  color:black;
+  bottom:0px;
+  font-family:times new roman;
+  font-style:italic;
+  background:#d8d8d8;
+  left:0px;
+  z-index:9
+}
+
+#stickerbox .capture {
+  padding:3px 0;
+  width:70px;
+  text-align:center;
+  font-size:11.5px;
+  border:3px outset white;
+  color:black;
+  top:0px;
+  font-family:times new roman;
+  font-style:italic;
+  background:#d8d8d8;
+  left:0px;
+  z-index:9
+}
+
+#stickerbox.video .capture::before {
+  content: 'record video';
+}
+
+#stickerbox.picture .capture::before {
+  content: 'take picture';
+}
+
+#stickerbox .countdown:active,
+#stickerbox .capture:active {
+  border:3px inset white;
+}
+
+/* */
+
+#stickerbutton {
+  position: absolute;
+  bottom: -2px;
+  right: 152px;
+  width: 30px;
+  height: 30px;
+  border: 4px outset #5f0;
+  background: yellow;
+  background: url(./image/camera.gif);
+  transition: all .5s ease-in-out;
+  z-index:99999;
+}
+
+#stickerbutton.disabled {
+  pointer-events:none
+}
+
+#stickerbutton:active {
+  border: 2px inset #5f0;
+}
+
+#stickerbutton.howto {
+  border: 4px inset #c900ff
+}
+
+#stickerbutton.howto:active {
+
+}
+
+#stickerbox.video .timeline {
+    position: absolute;
+    bottom: 0;
+    right: 25px;
+    width: 185px;
+    height: 9px;
+    border: 2px solid magenta;
+    background: #4e0036;
+    z-index: 99;  
+}
+
+#stickerbox.video .timeline::before {
+  content:'';
+  background:#ffbde5;
+  width:100%;
+  height:10px;
+  transform:scaleX(0);
+  transform-origin:top left;
+  top:0;
+  left:0;
+  position:absolute;
+  z-index:999
+}
+
+#stickerbox.video .timeline.transition::before {
+  transition:4s all linear;
+}
+
+#stickerbox.video .timeline.recording::before {
+  transform:scaleX(1)
+}

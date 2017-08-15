@@ -3,7 +3,7 @@
 <head>
 
 <script>
-let bogversion = 251
+let bogversion = 254
 </script>
 
 <meta charset="utf-8">
@@ -21,7 +21,7 @@ let bogversion = 251
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
 
 <script>
-  var bogstyles = ["beeper","search","mobile","crawl","zoo","modem","bogchat","bin","bubbles","draw","drums","radio"]
+  var bogstyles = ["sticker","chapel","beeper","search","mobile","crawl","zoo","modem","bogchat","bin","bubbles","draw","radio"]
   
   for (var f=0;f<bogstyles.length;f++) {
     document.write('<link rel="stylesheet" href="./css/'+bogstyles[f]+'.css?'+bogversion+'" type="text/css">')
@@ -48,11 +48,19 @@ let bogversion = 251
     </div>
   </div>
   <div id="searchbar"></div>
+  <!--
   <div id="videobox" class="hidden">
+  
     <div id="videoclose"></div>
+    <div id="countdowntimer"></div>
     <video id="video" width="400" height="300" autoplay></video>
+    <span></span>
   </div>
-  <canvas id="canvas" width="400" height="300" style="display:none"></canvas>
+  -->
+  <video id="stickervideo" width="123" height="92" autoplay></video>
+  <video id="stickerpicture" width="400" height="300" autoplay></video>
+  <canvas id="stickerpicturecanvas" width="400" height="300" style="display:none"></canvas>
+  <canvas id="stickervideocanvas" width="123" height="92" style="display:none"></canvas>
   <div id="bin">
     <div id="newbinbutton"></div>
     <div id="backupbutton"></div>
@@ -75,6 +83,7 @@ let bogversion = 251
       <div class="led power">    </div>
     </div>
     <div id="drawingboard"></div>
+    <!--
     <div id="drummachineboard">
       <div id="app" class="">
         <div id="fullstop"></div>
@@ -89,6 +98,7 @@ let bogversion = 251
         <div class="app-region" id="r-footer"></div>
       </div>
     </div>
+    -->
     <span id="status">connecting...</span>
     <input type="text" spellcheck=false id="input" disabled="disabled" />
     <div id="storedbutton" ondragenter="dragpopup()"></div>
@@ -100,7 +110,7 @@ let bogversion = 251
     <div id="popbutton"></div>
     <div id="sendbutton"></div>
     <div id="uploadbutton"></div>
-    <div id="camerabutton"></div>
+    <div id="stickerbutton"></div>
     <div id="lockbutton"></div>
     <div id="binbutton"></div>
     <div id="mutebutton"></div>
@@ -155,7 +165,8 @@ let bogversion = 251
   <script src="./js/shared/util.js"></script>
 
   <script>
-    var bogmods = ["beeper","search","crawl","zoo","bin","modem","chat","radio","connect","actions","camera","images","breakapart","draw","bubbles","drums","pak","mobile"]
+    // out of order or depreciated: "drums", "fidget", "hamster"
+    var bogmods = ["pepper","chapel","beeper","search","crawl","zoo","bin","modem","sticker","chat","radio","connect","actions","images","breakapart","draw","bubbles","pak","mobile"]
     
     for (var f=0;f<bogmods.length;f++) {
       document.write('<script src="./js/'+bogmods[f]+'.js?'+bogversion+'"><\/script>')

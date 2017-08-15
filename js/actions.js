@@ -76,12 +76,12 @@ function bogscript(a,b) {
       }
       $('body').toggleClass("draw")
     },
-    drum: () => {
-      drumviewtoggle()
-    },
-    drums: () => {
-      drumviewtoggle()
-    },
+    // drum: () => {
+    //   drumviewtoggle()
+    // },
+    // drums: () => {
+    //   drumviewtoggle()
+    // },
     send: () => {
       if ( $('body').hasClass("drum") ) {
         hidebabydraw()   
@@ -98,8 +98,8 @@ function bogscript(a,b) {
       input.removeAttr('disabled')
       input.val("restarting now...")
       setTimeout(function() {
-      window.location.href = "https://bog.jollo.org"
-      },2000)
+        window.location.reload(true)
+      },1000)
     },
     mute: () => {
       togglemute()
@@ -182,6 +182,9 @@ function bogscript(a,b) {
         quiet.splice(index,1)
       }
       localStorage.setItem("quiet",JSON.stringify(quiet))
+    },
+    girl: () => {
+      beeper.ui.toggletype()
     },
     oper: () => {
       if (!b) {

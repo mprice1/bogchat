@@ -883,7 +883,7 @@ var beepserver = http.createServer(function(request, response) {
           }
           return
         }
-        var message = data.text.substring(0,1000)
+        var message = data.text.replace(/(\r\n|\n|\r)/gm," ").substring(0,1000)
         var telenum = data["from"].substring(0,60)
         var sendername = "-"
         var type = "message"

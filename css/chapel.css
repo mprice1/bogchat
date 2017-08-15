@@ -1,0 +1,67 @@
+html.chapel * {
+  cursor:none!important
+}
+
+html.chapelfadein body::before {
+  background: #666667;
+  content: '';
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999999;
+  position: fixed;
+  opacity:0;
+  top: 0;
+  left: 0;  
+  transition:5.5s opacity ease-in-out
+}
+
+html.chapelfadein.chapelfadeingoal body::before {
+  background: #666667;
+  content: '';
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999999;
+  position: fixed;
+  opacity:1;
+  top: 0;
+  left: 0;  
+}
+
+html.chapelx body::before{
+  background:none!important
+}
+
+html.chapelx body::after{
+  background:none!important
+}
+
+html.chapel body::before {
+  background: #a9a8a8;
+  transition:background 5s ease-in-out;
+  content: '';
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999999;
+  animation:13s chapel ease-in-out infinite alternate;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+html.chapel body::after {
+  background: #666667;
+  transition:background 5s ease-in-out;
+  content: '';
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999998;
+  position: fixed;
+  top: 0;
+  opacity:1;
+  left: 0;
+}
+
+@keyframes chapel {
+  0%   { opacity:0 }
+  100% { opacity:1 }
+}

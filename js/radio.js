@@ -187,7 +187,8 @@ $('#radiobutton').click(function() {
         $('#radiobutton').removeClass("pointereventsnone")
       },3000)
       
-    } else {
+    } 
+    else {
       $('#radiobutton').addClass("active")
       $('html').addClass("radioplaying")
       new Audio('http://radio.jollo.org:8000/radio.mp3?cachebuster='+Math.random()).play()

@@ -138,27 +138,27 @@ function startwebsocket() {
       history: () => {
         for (var i = 0; i < json.data.length; i++) {
           if (json.data[i].drum) {
-            console.log(json.data[i].text)
-            if (isJSON(atob(decodeURIComponent(json.data[i].text)))) {
-              var data = JSON.parse(atob(decodeURIComponent(json.data[i].text)))
-              var image = data.image
-              var backgroundcolor = data.color
-              var ytid = null
-              if (data.includeyt) {
-                if (data.includeyt === true ) {
-                  if (data.ytsync === false) {
-                    if (data.yturl) {
-                      var thisid = validateyoutubeurl(data.yturl)
-                      if ( thisid[0] === true ) {
-                        ytid = thisid[1]
-                      }
-                    } 
-                  }
-                }
-              }
-              var locale = (data.locale ) ? data.locale : ""
-              addDrumtrack(locale, json.data[i].author, json.data[i].text, image, backgroundcolor, json.data[i].color, json.data[i].id, ytid)
-            }
+            // console.log(json.data[i].text)
+            // if (isJSON(atob(decodeURIComponent(json.data[i].text)))) {
+            //   var data = JSON.parse(atob(decodeURIComponent(json.data[i].text)))
+            //   var image = data.image
+            //   var backgroundcolor = data.color
+            //   var ytid = null
+            //   if (data.includeyt) {
+            //     if (data.includeyt === true ) {
+            //       if (data.ytsync === false) {
+            //         if (data.yturl) {
+            //           var thisid = validateyoutubeurl(data.yturl)
+            //           if ( thisid[0] === true ) {
+            //             ytid = thisid[1]
+            //           }
+            //         } 
+            //       }
+            //     }
+            //   }
+            //   var locale = (data.locale ) ? data.locale : ""
+            //   addDrumtrack(locale, json.data[i].author, json.data[i].text, image, backgroundcolor, json.data[i].color, json.data[i].id, ytid)
+            // }
           }
           else {
             var locale = (json.data[i].locale ) ? json.data[i].locale : ""
@@ -228,19 +228,19 @@ function startwebsocket() {
       treehouse: () => {
         
       },
-      drum: () => {
-        if (isJSON(atob(json.data.text))) {
-          var data = JSON.parse(atob(json.data.text))
-          var image = data.image
-          var backgroundcolor = data.color
-          var locale = (data.locale) ? data.locale : ""
-          addDrumtrack(locale, json.data.author, json.data.text, image, backgroundcolor, json.data.color, json.data.id)
-        }
-        $('#content').scrollTop(200000)
-        setTimeout(function() {
-          $('#content').scrollTop(200000)
-        }, 300)
-      },
+      // drum: () => {
+      //   if (isJSON(atob(json.data.text))) {
+      //     var data = JSON.parse(atob(json.data.text))
+      //     var image = data.image
+      //     var backgroundcolor = data.color
+      //     var locale = (data.locale) ? data.locale : ""
+      //     addDrumtrack(locale, json.data.author, json.data.text, image, backgroundcolor, json.data.color, json.data.id)
+      //   }
+      //   $('#content').scrollTop(200000)
+      //   setTimeout(function() {
+      //     $('#content').scrollTop(200000)
+      //   }, 300)
+      // },
       fav: () => {
         if (visible === false) {
           if ($('p[data-id="' + json.data + '"] span').text() == myname) {
@@ -251,7 +251,8 @@ function startwebsocket() {
             }
             $('#title').html(`${mentionstar}(${unseenfavbundle}${unread}) bogchat`)
           }
-        } else {
+        } 
+        else {
           if ($('p[data-id="' + json.data + '"] span').text() == myname) {
             if (!$('#mutebutton').hasClass("frogmute")) {
               favchime()
@@ -284,6 +285,30 @@ function startwebsocket() {
       list: () => {
         console.log(json.data)
       },
+      
+      // chapel
+      chapelen: () => {
+        chapel.service.en()
+      },
+      
+      chapelopen: () => {
+        chapel.service.open()
+      },
+      
+      chapelclosed: () => {
+        $('#content p').remove()
+        $('#content').html("")
+        $('#exhibit').html("")            
+        chapel.service.closed()
+      },
+      
+      chapeltone: () => {
+        console.log("chapeltone")
+        console.log(json.data)
+        chapel.sound.start(json.data)
+      },
+      
+      // beeper
       beepernew: () => {
         beeper.handler.messages.data.incoming(json.data)
       },

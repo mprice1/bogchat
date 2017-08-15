@@ -79,9 +79,12 @@ function addMessage(locale, author, message, color, id, zoo) {
       var author = ( {
       
         "yvonnie" : author + '<img src="https://bog.jollo.org/tiny/yvonne.gif">',
+        "snoggybox" : author + '<img src="https://bog.jollo.org/tiny/snoggybox.gif">',
         "marks" : author + '<img src="https://bog.jollo.org/tiny/marks.gif">',
         "buyu" : author + '<img src="https://bog.jollo.org/tiny/buyu.gif">',
         "jayefkay" : author + '<img src="https://bog.jollo.org/tiny/jfk.gif">',
+        "KingofMugen" : author + '<img src="https://bog.jollo.org/tiny/mugen.gif">',
+        "psychil" : author + '<img src="https://bog.jollo.org/tiny/psychil.gif">',
         "kiptok" : author + '<img src="https://bog.jollo.org/tiny/kiptok.png">',
         "mold" : author + '<img src="https://bog.jollo.org/tiny/mold.png">',
         "zeal palace" : author + '<img src="https://bog.jollo.org/tiny/zeal.png">',
@@ -89,6 +92,7 @@ function addMessage(locale, author, message, color, id, zoo) {
         "zeal%20palace" : author + '<img src="https://bog.jollo.org/tiny/zeal.png">',
         "andrej" : author + '<img src="https://bog.jollo.org/tiny/andrej.png">',
         "kiptijek" : author + '<img src="https://bog.jollo.org/tiny/kiptok.png">',
+        "Ice" : author + '<img src="https://bog.jollo.org/tiny/ice.png">',
         "bun" : author + '<img src="https://bog.jollo.org/tiny/bun.png">',
         "yvonne" : author + '<img src="https://bog.jollo.org/tiny/yvonne.gif">',
         "dvvidw" : author + '<img src="https://bog.jollo.org/tiny/dvvid.gif">',
@@ -185,7 +189,7 @@ function richtext(input) {
       word = `<a target="_blank" href="${word}">${word}</a>`
     }
     else {
-      word = word.replace(/pepper/gi, '<img src="https://bog.jollo.org/css/image/pepper.gif">')
+      word = word.replace(/pepper/gi, '<img class="pepper" src="https://bog.jollo.org/css/image/pepper.gif">')
     }
     string[i] = word
   }

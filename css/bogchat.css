@@ -221,12 +221,16 @@ html.day #content.starfox {
 }
 
 body.setnick #msg {
-  padding: 8px;
+  padding: 14px;
   animation: 1s rainbow linear infinite
 }
 
 body.setnick #input {
-  margin-left:88px;
+  width: calc(100% - 252px);
+  margin-left: 200px;
+  height: 96px;
+  font-size: 72px;
+  border: 6px dashed magenta;
 }
 
 body.setnick [id*=button], body.setnick #storedarea {
@@ -235,16 +239,19 @@ body.setnick [id*=button], body.setnick #storedarea {
 }
 
 body.setnick #status {
-  width: 88px;
-  display: inline-block;
-  padding-top: 1px;
-  overflow: hidden;
-  padding-left: 6px;
-  position: absolute;
-  margin-top: 15px;
-  bottom:6px;
-  color: coral;
-  opacity: 1; 
+    width: 180px;
+    display: inline-block;
+    padding-top: 1px;
+    overflow: hidden;
+    padding-left: 14px;
+    position: absolute;
+    margin-top: 15px;
+    bottom: 6px;
+    background: black;
+    border: 3px solid black;
+    font-size: 50px;
+    color: #dbff50;
+    opacity: 1;
 }
 
 #msg {
@@ -252,10 +259,8 @@ body.setnick #status {
   bottom: 0;
   left: 0;
   width: 100%;
-
   display: inline;
   perspective:120px; 
-
 }
 
 
@@ -448,52 +453,6 @@ html.night #lockbutton.locked {
   border: 4px inset white
 }
 
-#camerabutton {
-  position: absolute;
-  bottom: -2px;
-  right: 152px;
-  width: 30px;
-  height: 30px;
-  border: 4px outset #5f0;
-  background: yellow;
-  background: url(./image/camera.gif);
-  transition: all .5s ease-in-out;
-  z-index:99999;
-}
-
-#camerabutton:active {
-  border: 2px inset #5f0;
-}
-
-#camerabutton.howto {
-  width: 120px;
-  background: black;
-  border: 20px outset magenta;
-  border-top: 20px outset blue;
-  border-right: 20px double lime;
-  z-index: 999999;
-}
-
-#camerabutton.howto:active {
-  border: 20px inset magenta;
-  border-top: 20px inset blue;
-  border-right: 20px double lime;
-}
-
-#camerabutton.howto::after {
-  content: 'TAKE PICTURE';
-  font-weight: bold;
-  text-decoration: underline;
-  text-shadow: 2px 2px 0px #000;
-  color: yellow;
-  font-size: 13px;
-  font-family: arial;
-  position: absolute;
-  top: 5px;
-  left: 10px;
-  width: 300px;
-}
-
 #storedbutton {
   position: absolute;
   bottom: -2px;
@@ -632,51 +591,6 @@ html.night #storedcontainer {
   0% { transform: rotateZ(27deg) rotateX(-33deg) rotateY(0deg) scale(.4) translateZ(10px); }
   100% { transform: rotateZ(27deg) rotateX(-33deg) rotateY(360deg) scale(.4) translateZ(10px); }
   
-}
-
-/*videobox*/
-
-video {
-  border-top: 12px dotted magenta;
-  border-bottom: 5px solid blue;
-  border-left: 6px solid lime;
-  border-right: 12px solid yellow;
-  position: absolute;
-  z-index: 5
-}
-
-#videobox {
-  position: absolute;
-  bottom: 80px;
-  right: 40px;
-  width: 400px;
-  height: 300px;
-}
-
-#videoclose {
-  position: absolute;
-  top: 30px;
-  left: 30px;
-  border: 10px;
-  width: 70px;
-  height: 20px;
-  background: white;
-  z-index: 10;
-  border: 5px outset white;
-}
-
-#videoclose:active {
-  border: 5px inset white;
-}
-
-#videoclose::after {
-  content: 'close';
-  font-family: tmes new roman;
-  font-style: italic;
-  font-size: 12px;
-  position: absolute;
-  left: 10px;
-  top: 0;
 }
 
 

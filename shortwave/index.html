@@ -1,0 +1,11 @@
+
+`<body><iframe src="http://websdr.ewi.utwente.nl:8901/?tune=8992" sandbox="allow-same-origin allow-pointer-lock allow-scripts" width=800 height=600></iframe></body>`
+
+
+
+var iframe = document.createElement('iframe')
+var html = `<body><iframe src="https://www.cracking.com.ar/redir/redir.php?URL=http://websdr.ewi.utwente.nl:8901/?tune=8992" sandbox="allow-same-origin allow-pointer-lock allow-scripts" width=800 height=600></iframe></body>`
+iframe.src = 'data:text/html;charset=utf-8,' + encodeURI(html)
+iframe.classname = "shortwaveiframe"
+document.body.appendChild(iframe)
+

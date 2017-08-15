@@ -57,7 +57,7 @@ function uploadtrackfull(data) {
     bordercolor: bordercolor,
     sequence: buildsequence()
   }
-  var bundlestring = btoa(JSON.stringify(bundle))
+  var bundlestring = btoa(encodeURIComponent(JSON.stringify(bundle)))
   console.log(bundlestring)
   send({
     type: "drum",
@@ -246,10 +246,10 @@ var SampleBank = (function(A) {
       });
     }
     req.onerror = function(err) {
-      console.error('Error loading sample data', key, url, err);
+      console.error('Error loading sample data', key, url, err)
     }
-    req.open('GET', url, true);
-    req.send();
+    req.open('GET', url, true)
+    req.send()
   }
   /**
    * Resource playing

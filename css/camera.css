@@ -1,0 +1,136 @@
+#camerabutton {
+  position: absolute;
+  bottom: -2px;
+  right: 152px;
+  width: 30px;
+  height: 30px;
+  border: 4px outset #5f0;
+  background: yellow;
+  background: url(./image/camera.gif);
+  transition: all .5s ease-in-out;
+  z-index:99999;
+  
+}
+
+#camerabutton:active {
+  border: 2px inset #5f0;
+}
+
+#camerabutton.howto {
+  width: 120px;
+  background: black;
+  border: 20px outset magenta;
+  border-top: 20px outset blue;
+  border-right: 20px double lime;
+  z-index: 999999;
+}
+
+#camerabutton.howto:active {
+  border: 20px inset magenta;
+  border-top: 20px inset blue;
+  border-right: 20px double lime;
+}
+
+#camerabutton.howto::after {
+  content: 'TAKE PICTURE';
+  font-weight: bold;
+  text-decoration: underline;
+  text-shadow: 2px 2px 0px #000;
+  color: yellow;
+  font-size: 13px;
+  font-family: arial;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  width: 300px;
+}
+
+/*videobox*/
+
+video {
+  border-top: 12px dotted magenta;
+  border-bottom: 5px solid blue;
+  border-left: 6px solid lime;
+  border-right: 12px solid yellow;
+  position: absolute;
+  z-index: 5;
+
+}
+
+#videobox {
+  position: absolute;
+  bottom: 80px;
+  right: 40px;
+  width: 400px;
+  height: 300px;
+}
+
+#videoclose {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  border: 10px;
+  width: 70px;
+  height: 20px;
+  background: white;
+  z-index: 10;
+  border: 5px outset white;
+}
+
+#videoclose:active {
+  border: 5px inset white;
+}
+
+#videoclose::after {
+  content: 'close';
+  font-family: tmes new roman;
+  font-style: italic;
+  font-size: 12px;
+  position: absolute;
+  left: 10px;
+  top: 0;
+}
+
+#countdowntimer {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  border: 10px;
+  width: 70px;
+  height: 20px;
+  background: white;
+  z-index: 10;
+  border: 5px outset white;
+}
+
+#countdowntimer:active {
+  border: 5px inset white;
+}
+
+#countdowntimer::after {
+  content: '3sec timer';
+  font-family: tmes new roman;
+  font-style: italic;
+  font-size: 12px;
+  position: absolute;
+  left: 10px;
+  top: 0;
+}
+
+#videobox span {
+  position: absolute;
+    bottom: 0;
+    z-index: 999999999999999;
+    font-weight: normal;
+    font-size: 200px;
+    transform: translate(-50%);
+    left: 50%;
+    color: #ffd0d4;
+    text-shadow: 3px 3px 10px black;
+    animation:1s countdowntimer linear infinite;
+}
+
+@keyframes countdowntimer {
+  0% {filter: hue-rotate(0deg)}
+  100% {filter: hue-rotate(360deg)}
+}

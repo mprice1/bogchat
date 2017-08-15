@@ -21,6 +21,8 @@ var beeper = {
   init: () => {
     // build beeper
     
+    
+    
     beeper.ui.create()
     // init localstorage settings
     beeper.events.listeners()
@@ -76,9 +78,18 @@ var beeper = {
       )
       $(function() {
         $("#beeper").draggable({
-          containment: "window"
+          scroll: false
         })
-      })        
+      })
+      if (localStorage.getItem("beepertype")) {
+        localStorage.removeItem("beepertype")
+      }
+      if (!localStorage.getItem("neuebeepertype")) {
+        localStorage.setItem("neuebeepertype","girl")
+      }
+      if (localStorage.getItem("neuebeepertype") == "girl" ) {
+        $('#beeper').addClass("girl")
+      }
     },
     transform: () => {
       if (beeper.fs.data.settings.taehyung) {
@@ -266,6 +277,16 @@ var beeper = {
           //}, 30000)          
           }, beeper.fs.data.settings.timeout * 1000)          
         }
+      }
+    },
+    toggletype: () => {
+      if ( $('#beeper').hasClass("girl") ) {
+        $('#beeper').removeClass("girl")
+        localStorage.setItem("beepertype", "normal")
+      }  
+      else {
+        $('#beeper').addClass("girl")
+        localStorage.setItem("beepertype", "girl")
       }
     }
     
@@ -562,7 +583,7 @@ var beeper = {
           // dump old messages > 500 messages in book
           if ( $.grep(beeper.fs.data.messages, (x) => { return x.id === e.id }).length === 0 ) {
             beeper.fs.data.messages.push(e)
-            if ( beeper.fs.data.messages.length >= 198 ) {
+            if ( beeper.fs.data.messages.length >= 398 ) {
               beeper.fs.data.messages.shift()
             }
             beeper.fs.write()
@@ -996,4 +1017,3 @@ var beeper = {
 }
 
 beeper.init()
-
