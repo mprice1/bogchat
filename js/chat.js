@@ -83,6 +83,7 @@ function addMessage(locale, author, message, color, id, zoo) {
         "marks" : author + '<img src="https://bog.jollo.org/tiny/marks.gif">',
         "buyu" : author + '<img src="https://bog.jollo.org/tiny/buyu.gif">',
         "jayefkay" : author + '<img src="https://bog.jollo.org/tiny/jfk.gif">',
+        "katzenjammer" : author + '<img src="https://bog.jollo.org/tiny/katzenjammer.gif">',
         "KingofMugen" : author + '<img src="https://bog.jollo.org/tiny/mugen.gif">',
         "psychil" : author + '<img src="https://bog.jollo.org/tiny/psychil.gif">',
         "kiptok" : author + '<img src="https://bog.jollo.org/tiny/kiptok.png">',
