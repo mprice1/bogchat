@@ -65,34 +65,38 @@ function bogscript(a,b) {
     //  document.write('<link rel="stylesheet" href="https://bog.jollo.org/css/fidget.css" type="text/css">')
     //  document.write('<script src="https://bog.jollo.org/js/fidget.js"><\/script>')
     //},
-    draw: () => {
-      hidebabydraw()  
-      if ($('body').hasClass("drum")) {
-        $('body').removeClass('drum')
-      }
-      if ($('body').hasClass("image")) {
-        $('body').removeClass('image')
-        $('#binbutton').removeClass("locked")
-      }
-      $('body').toggleClass("draw")
-    },
+    
+    // draw: () => {
+    //   hidebabydraw()  
+    //   if ($('body').hasClass("drum")) {
+    //     $('body').removeClass('drum')
+    //   }
+    //   if ($('body').hasClass("image")) {
+    //     $('body').removeClass('image')
+    //     $('#binbutton').removeClass("locked")
+    //   }
+    //   $('body').toggleClass("draw")
+    // },
+    
     // drum: () => {
     //   drumviewtoggle()
     // },
     // drums: () => {
     //   drumviewtoggle()
     // },
-    send: () => {
-      if ( $('body').hasClass("drum") ) {
-        hidebabydraw()   
-        uploadtrack($('#includecoverart').prop('checked'))
-      }
-      else if ( $('body').hasClass("draw") ) {
-        var blobber = $('.drawing-board-canvas')[0].toDataURL("image/png")
-        var uri = blobber.substring(22)
-        webcamtoimgur(uri)
-      }
-    },
+    
+    // send: () => {
+    //   if ( $('body').hasClass("drum") ) {
+    //     hidebabydraw()   
+    //     uploadtrack($('#includecoverart').prop('checked'))
+    //   }
+    //   else if ( $('body').hasClass("draw") ) {
+    //     var blobber = $('.drawing-board-canvas')[0].toDataURL("image/png")
+    //     var uri = blobber.substring(22)
+    //     webcamtoimgur(uri)
+    //   }
+    // },
+    
     restart: () => {
       var input = $('#msg #input')
       input.removeAttr('disabled')
@@ -184,7 +188,7 @@ function bogscript(a,b) {
       localStorage.setItem("quiet",JSON.stringify(quiet))
     },
     girl: () => {
-      beeper.ui.toggletype()
+      bog.beeper.ui.toggletype()
     },
     oper: () => {
       if (!b) {
@@ -241,15 +245,16 @@ function bogscript(a,b) {
     }
   }
   
-  function drumviewtoggle() {
-    hidebabydraw()   
-    if ($('body').hasClass("draw")) {
-      $('body').removeClass('draw')
-    }    
-    if ($('body').hasClass("image")) {
-      $('body').removeClass('image')
-      $('#binbutton').removeClass("locked")
-    }
-    $('body').toggleClass("drum")
-  }
+  // function drumviewtoggle() {
+  //   hidebabydraw()   
+  //   if ($('body').hasClass("draw")) {
+  //     $('body').removeClass('draw')
+  //   }    
+  //   if ($('body').hasClass("image")) {
+  //     $('body').removeClass('image')
+  //     $('#binbutton').removeClass("locked")
+  //   }
+  //   $('body').toggleClass("drum")
+  // }
+  
 }

@@ -310,10 +310,10 @@ function startwebsocket() {
       
       // beeper
       beepernew: () => {
-        beeper.handler.messages.data.incoming(json.data)
+        bog.beeper.handler.messages.data.incoming(json.data)
       },
       beeperhistory: () => {
-        beeper.handler.messages.data.history(json.data)
+        bog.beeper.handler.messages.data.history(json.data)
       },
       // feedpeach: () => {
       //   hamster.fedpeach(json.data)

@@ -1,9 +1,9 @@
-const pepper = {
+bog.pepper = {
 
   init: () => {
-    pepper.data.musicbox.audio = new Audio('https://bog.jollo.org/au/pepper/musicbox.mp3')
-    pepper.data.winder.audio = new Audio('https://bog.jollo.org/au/pepper/wind.mp3')
-    pepper.events()
+    bog.pepper.data.musicbox.audio = new Audio('https://bog.jollo.org/au/pepper/musicbox.mp3')
+    bog.pepper.data.winder.audio = new Audio('https://bog.jollo.org/au/pepper/wind.mp3')
+    bog.pepper.events()
   },
   data: {
     musicbox: {
@@ -17,17 +17,17 @@ const pepper = {
     }
   },
   timer: () => {
-    if (pepper.data.musicbox.playing) {
+    if (bog.pepper.data.musicbox.playing) {
       setTimeout(()=>{
-        if (pepper.data.musicbox.audio.currentTime >= pepper.data.musicbox.end) {       
-          pepper.handler.pause()
-          pepper.handler.reset()
+        if (bog.pepper.data.musicbox.audio.currentTime >= bog.pepper.data.musicbox.end) {       
+          bog.pepper.handler.pause()
+          bog.pepper.handler.reset()
         }
-        else if (pepper.data.musicbox.audio.currentTime >= pepper.data.musicbox.target) {
-          pepper.handler.pause()
+        else if (bog.pepper.data.musicbox.audio.currentTime >= bog.pepper.data.musicbox.target) {
+          bog.pepper.handler.pause()
         }
         else {      
-          requestAnimationFrame(pepper.timer)
+          requestAnimationFrame(bog.pepper.timer)
         }
       },100)
     }
@@ -37,34 +37,34 @@ const pepper = {
   },
   events: () => {
     $(document).on('click','img.pepper',()=>{
-      pepper.handler.wind()
+      bog.pepper.handler.wind()
     })
   },
   handler: {
     wind: () => {
-      pepper.data.musicbox.target+=2
-      pepper.data.winder.audio.play()
+      bog.pepper.data.musicbox.target+=2
+      bog.pepper.data.winder.audio.play()
       setTimeout(()=>{
-        pepper.handler.play()
+        bog.pepper.handler.play()
       },200)
     },
     play: () => {
       
-      if (!pepper.data.playing) {
-        pepper.data.musicbox.audio.play()
-        pepper.data.musicbox.playing = true
-        pepper.timer()
+      if (!bog.pepper.data.playing) {
+        bog.pepper.data.musicbox.audio.play()
+        bog.pepper.data.musicbox.playing = true
+        bog.pepper.timer()
       }
       
     },
     pause: () => {
-      pepper.data.musicbox.audio.pause()
-      pepper.data.musicbox.playing = false      
+      bog.pepper.data.musicbox.audio.pause()
+      bog.pepper.data.musicbox.playing = false      
     },
     reset: () => {
-      pepper.data.musicbox.audio.currentTime = 0
+      bog.pepper.data.musicbox.audio.currentTime = 0
     }
   }
 }
 
-pepper.init()
+bog.pepper.init()

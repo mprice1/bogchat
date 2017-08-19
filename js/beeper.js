@@ -11,7 +11,7 @@
 //   private BIT(1) NOT NULL
 // );
 
-var beeper = {
+bog.beeper = {
   
   mode: {
     status: null,
@@ -21,39 +21,37 @@ var beeper = {
   init: () => {
     // build beeper
     
-    
-    
-    beeper.ui.create()
+    bog.beeper.ui.create()
     // init localstorage settings
-    beeper.events.listeners()
-    beeper.fs.init()
+    bog.beeper.events.listeners()
+    bog.beeper.fs.init()
 
     // init
-    beeper.mode.status = "init"
-    beeper.ui.transform()
+    bog.beeper.mode.status = "init"
+    bog.beeper.ui.transform()
     
     setTimeout(()=>{
-      beeper.ui.display.data.a("Qloppi Mi-Yu")
-      beeper.ui.display.data.b("Beeper Service")
-      beeper.ui.indiglo.on()
+      bog.beeper.ui.display.data.a("Qloppi Mi-Yu")
+      bog.beeper.ui.display.data.b("Beeper Service")
+      bog.beeper.ui.indiglo.on()
     },300)
     setTimeout(()=>{
-      beeper.ui.display.data.a("Your World")
-      beeper.ui.display.data.b("Connected.")
-      beeper.handler.messages.data.request()
+      bog.beeper.ui.display.data.a("Your World")
+      bog.beeper.ui.display.data.b("Connected.")
+      bog.beeper.handler.messages.data.request()
     },3000)
     setTimeout(()=>{
-      beeper.ui.indiglo.off()
+      bog.beeper.ui.indiglo.off()
     },6000)
     setTimeout(()=>{
       $('#beeper').removeClass("disabled")
-      beeper.handler.idle.init()
+      bog.beeper.handler.idle.init()
       
     },6800)
     
     // fast on:
-    // beeper.ui.transform()
-    // beeper.handler.idle.init()
+    // bog.beeper.ui.transform()
+    // bog.beeper.handler.idle.init()
     // $('#beeper').removeClass("disabled")
     // send request to fetch history
     // create events
@@ -92,17 +90,17 @@ var beeper = {
       }
     },
     transform: () => {
-      if (beeper.fs.data.settings.taehyung) {
+      if (bog.beeper.fs.data.settings.taehyung) {
         $('#beeper').addClass("taehyung")
       }
       else {
         $('#beeper').removeClass("taehyung")
       }
-      if (beeper.fs.data.settings.offsetleft) {
-        $('#beeper').css("left",beeper.fs.data.settings.offsetleft)
+      if (bog.beeper.fs.data.settings.offsetleft) {
+        $('#beeper').css("left",bog.beeper.fs.data.settings.offsetleft)
       }
-      if (beeper.fs.data.settings.offsettop) {
-        $('#beeper').css("top",beeper.fs.data.settings.offsettop)
+      if (bog.beeper.fs.data.settings.offsettop) {
+        $('#beeper').css("top",bog.beeper.fs.data.settings.offsettop)
       }
     },
     display: {
@@ -119,8 +117,8 @@ var beeper = {
         },
         feed: (e, target) => {
           
-          beeper.ui.display.feeder.timer.prescroll[target].clear()
-          beeper.ui.display.feeder.timer.scroll[target].clear()
+          bog.beeper.ui.display.feeder.timer.prescroll[target].clear()
+          bog.beeper.ui.display.feeder.timer.scroll[target].clear()
           // scroll system 
           // e => message
           // target => a/b
@@ -128,30 +126,30 @@ var beeper = {
           // if length of e is less than 16 no need to scroll
           // e needs to be a string
           e = e.toString()
-          beeper.ui.display.feeder.data.position[target] = 0
+          bog.beeper.ui.display.feeder.data.position[target] = 0
           
           if (e.length <= 16) {
-            beeper.ui.display.data[target](e)
-            beeper.ui.display.feeder.data.message[target] = null
+            bog.beeper.ui.display.data[target](e)
+            bog.beeper.ui.display.feeder.data.message[target] = null
             return
           }
           
-          beeper.ui.display.feeder.data.message[target] = e
-          beeper.ui.display.data[target](e.substring(0,16))
+          bog.beeper.ui.display.feeder.data.message[target] = e
+          bog.beeper.ui.display.data[target](e.substring(0,16))
           
           // delay scrolling for a split second before marqueeing
-          beeper.ui.display.feeder.timer.prescroll[target].renew()
+          bog.beeper.ui.display.feeder.timer.prescroll[target].renew()
 
         },
         
         scroll: (target) => {
 
-          beeper.ui.display.feeder.data.message[target] = beeper.ui.display.feeder.data.message[target].substr(1)
-          beeper.ui.display.data[target](beeper.ui.display.feeder.data.message[target].substring(0,16))
+          bog.beeper.ui.display.feeder.data.message[target] = bog.beeper.ui.display.feeder.data.message[target].substr(1)
+          bog.beeper.ui.display.data[target](bog.beeper.ui.display.feeder.data.message[target].substring(0,16))
           
           // if message hasnt finished scrolling, request a timer          
-          if (beeper.ui.display.feeder.data.message[target].length > 16) {
-            beeper.ui.display.feeder.timer.scroll[target].renew()
+          if (bog.beeper.ui.display.feeder.data.message[target].length > 16) {
+            bog.beeper.ui.display.feeder.timer.scroll[target].renew()
           }
           // otherwise prepare to timeout for idle finish
           
@@ -163,25 +161,25 @@ var beeper = {
             a: {
               data: null,
               clear: () => {
-                clearTimeout(beeper.ui.display.feeder.timer.prescroll.a.data)
+                clearTimeout(bog.beeper.ui.display.feeder.timer.prescroll.a.data)
               },
               renew: () => {
-                beeper.ui.display.feeder.timer.prescroll.a.clear()
-                beeper.ui.display.feeder.timer.prescroll.a.data = setTimeout(()=> {
-                  beeper.ui.display.feeder.scroll("a")
-                }, (beeper.fs.data.settings.delay * 300) )
+                bog.beeper.ui.display.feeder.timer.prescroll.a.clear()
+                bog.beeper.ui.display.feeder.timer.prescroll.a.data = setTimeout(()=> {
+                  bog.beeper.ui.display.feeder.scroll("a")
+                }, (bog.beeper.fs.data.settings.delay * 300) )
               }
             },
             b: {
               data: null,
               clear: () => {
-                clearTimeout(beeper.ui.display.feeder.timer.prescroll.b.data)
+                clearTimeout(bog.beeper.ui.display.feeder.timer.prescroll.b.data)
               },
               renew: () => {
-                beeper.ui.display.feeder.timer.prescroll.b.clear()
-                beeper.ui.display.feeder.timer.prescroll.b.data = setTimeout(()=> {
-                  beeper.ui.display.feeder.scroll("b")
-                }, (beeper.fs.data.settings.delay * 300) )
+                bog.beeper.ui.display.feeder.timer.prescroll.b.clear()
+                bog.beeper.ui.display.feeder.timer.prescroll.b.data = setTimeout(()=> {
+                  bog.beeper.ui.display.feeder.scroll("b")
+                }, (bog.beeper.fs.data.settings.delay * 300) )
               }            
             }            
           },
@@ -190,25 +188,25 @@ var beeper = {
             a: {
               data: null,
               clear: () => {
-                clearTimeout(beeper.ui.display.feeder.timer.scroll.a.data)
+                clearTimeout(bog.beeper.ui.display.feeder.timer.scroll.a.data)
               },
               renew: () => {
-                beeper.ui.display.feeder.timer.scroll.a.clear();
-                beeper.ui.display.feeder.timer.scroll.a.data = setTimeout(() => {
-                  beeper.ui.display.feeder.scroll("a")
-                }, ((1 * 250) / ((beeper.fs.data.settings.marquee) / 8)) )        
+                bog.beeper.ui.display.feeder.timer.scroll.a.clear();
+                bog.beeper.ui.display.feeder.timer.scroll.a.data = setTimeout(() => {
+                  bog.beeper.ui.display.feeder.scroll("a")
+                }, ((1 * 250) / ((bog.beeper.fs.data.settings.marquee) / 8)) )        
               }
             },
             b: {
               data: null,
               clear: () => {
-                clearTimeout(beeper.ui.display.feeder.timer.scroll.b.data)
+                clearTimeout(bog.beeper.ui.display.feeder.timer.scroll.b.data)
               },
               renew: () => {
-                beeper.ui.display.feeder.timer.scroll.b.clear();
-                beeper.ui.display.feeder.timer.scroll.b.data = setTimeout(() => {
-                  beeper.ui.display.feeder.scroll("b")
-                }, ((1 * 250) / ((beeper.fs.data.settings.marquee) / 8)) )          
+                bog.beeper.ui.display.feeder.timer.scroll.b.clear();
+                bog.beeper.ui.display.feeder.timer.scroll.b.data = setTimeout(() => {
+                  bog.beeper.ui.display.feeder.scroll("b")
+                }, ((1 * 250) / ((bog.beeper.fs.data.settings.marquee) / 8)) )          
               }
             }            
           }
@@ -237,28 +235,28 @@ var beeper = {
       timer: {
         data: null,
         clear: () => {
-          clearTimeout(beeper.ui.indiglo.timer.data)
+          clearTimeout(bog.beeper.ui.indiglo.timer.data)
         },
         renew: () => {
-          beeper.ui.indiglo.timer.clear();
-          beeper.ui.indiglo.timer.data = setTimeout(() => {
-            if (!beeper.fs.data.settings.indiglo) {
-              beeper.ui.indiglo.off() 
+          bog.beeper.ui.indiglo.timer.clear();
+          bog.beeper.ui.indiglo.timer.data = setTimeout(() => {
+            if (!bog.beeper.fs.data.settings.indiglo) {
+              bog.beeper.ui.indiglo.off() 
             }
           //}, 30000)          
-          }, beeper.fs.data.settings.timeout * 1000)          
+          }, bog.beeper.fs.data.settings.timeout * 1000)          
         }
       },
       on: () => {
         $('#beeper .indigloscreen').addClass("on")          
       },
       off: () => {
-        beeper.ui.indiglo.timer.clear()
+        bog.beeper.ui.indiglo.timer.clear()
         $('#beeper .indigloscreen').removeClass("flicker")
         $('#beeper .indigloscreen').removeClass("on")        
       },
       flicker: () => {
-        beeper.ui.indiglo.timer.renew()
+        bog.beeper.ui.indiglo.timer.renew()
         $('#beeper .indigloscreen').addClass("flicker")
         $('#beeper .indigloscreen').addClass("on")
       }
@@ -267,15 +265,15 @@ var beeper = {
       timer: {
         data: null,
         clear: () => {
-          clearTimeout(beeper.ui.sleep.timer.data)
+          clearTimeout(bog.beeper.ui.sleep.timer.data)
         },
         renew: () => {
-          beeper.ui.sleep.timer.clear();
-          beeper.ui.sleep.timer.data = setTimeout(() => {
+          bog.beeper.ui.sleep.timer.clear();
+          bog.beeper.ui.sleep.timer.data = setTimeout(() => {
             // if its in the messages wait a little longer
-            beeper.handler.idle.init()
+            bog.beeper.handler.idle.init()
           //}, 30000)          
-          }, beeper.fs.data.settings.timeout * 1000)          
+          }, bog.beeper.fs.data.settings.timeout * 1000)          
         }
       }
     },
@@ -299,102 +297,102 @@ var beeper = {
       
       (({
         settings: () => {
-          beeper.handler.settings.control.pitch("up")
+          bog.beeper.handler.settings.control.pitch("up")
         },
         idle: () => {
-          if ( beeper.fs.data.messages.length > 0) {
-            beeper.handler.messages.init()
+          if ( bog.beeper.fs.data.messages.length > 0) {
+            bog.beeper.handler.messages.init()
           }
         },
         messages: () => {
-          beeper.handler.messages.control.pitch("up")
+          bog.beeper.handler.messages.control.pitch("up")
         },        
-      })[beeper.mode.status] || (() => {  } ))()      
+      })[bog.beeper.mode.status] || (() => {  } ))()      
       
     },
     down: () => {
       
       (({
         settings: () => {
-          beeper.handler.settings.control.pitch("down")
+          bog.beeper.handler.settings.control.pitch("down")
         },
         idle: () => {
-          if ( beeper.fs.data.messages.length > 0) {
-            beeper.handler.messages.init()
+          if ( bog.beeper.fs.data.messages.length > 0) {
+            bog.beeper.handler.messages.init()
           }
         },
         messages: () => {
-          beeper.handler.messages.control.pitch("down")
+          bog.beeper.handler.messages.control.pitch("down")
         },
         
-      })[beeper.mode.status] || (() => {  } ))()        
+      })[bog.beeper.mode.status] || (() => {  } ))()        
       
     },
     left: () => {
       
       (({
         menu: () => {
-          beeper.handler.menu.control.left()
+          bog.beeper.handler.menu.control.left()
         },
         chime: () => {
-          beeper.handler.chime.control.left()
+          bog.beeper.handler.chime.control.left()
         },
         settings: () => {
-          beeper.handler.settings.control.left()
+          bog.beeper.handler.settings.control.left()
         },
         messages: () => {
-          beeper.handler.messages.control.left()
+          bog.beeper.handler.messages.control.left()
         },        
-      })[beeper.mode.status] || (() => {  } ))()
+      })[bog.beeper.mode.status] || (() => {  } ))()
       
     },
     right: () => {
       
       (({
         menu: () => {
-          beeper.handler.menu.control.right()
+          bog.beeper.handler.menu.control.right()
         },
         chime: () => {
-          beeper.handler.chime.control.right()
+          bog.beeper.handler.chime.control.right()
         },
         settings: () => {
-          beeper.handler.settings.control.right()
+          bog.beeper.handler.settings.control.right()
         },
         messages: () => {
-          beeper.handler.messages.control.right()
+          bog.beeper.handler.messages.control.right()
         },         
-      })[beeper.mode.status] || (() => {  } ))()
+      })[bog.beeper.mode.status] || (() => {  } ))()
       
     },
     menu: () => {
       
       (({
         idle: () => {
-          beeper.handler.menu.init()
+          bog.beeper.handler.menu.init()
         },
         menu: () => {
-          beeper.handler.menu.control.select()
+          bog.beeper.handler.menu.control.select()
         },
         chime: () => {
-          beeper.handler.chime.control.select()
+          bog.beeper.handler.chime.control.select()
         },
         settings: () => {
-          beeper.handler.settings.control.select()
+          bog.beeper.handler.settings.control.select()
         }
-      })[beeper.mode.status] || (() => {  } ))()
+      })[bog.beeper.mode.status] || (() => {  } ))()
       
     },
     home: () => {
       
-      console.log(beeper.mode.status)
+      console.log(bog.beeper.mode.status)
       
-      if ( beeper.mode.status == "idle" 
-        && beeper.fs.data.messages.length > 0 ) {
-        beeper.handler.messages.init()
+      if ( bog.beeper.mode.status == "idle" 
+        && bog.beeper.fs.data.messages.length > 0 ) {
+        bog.beeper.handler.messages.init()
       }
       else {
         
-        beeper.handler.idle.init()
+        bog.beeper.handler.idle.init()
       }
       
     },
@@ -404,10 +402,10 @@ var beeper = {
   fs: {
     data: {},   
     read: () => {
-      beeper.fs.data = JSON.parse(atob(localStorage.getItem("bogbeeper")))
+      bog.beeper.fs.data = JSON.parse(atob(localStorage.getItem("bogbeeper")))
     },
     write: () => {
-      localStorage.setItem("bogbeeper", btoa(JSON.stringify(beeper.fs.data)))
+      localStorage.setItem("bogbeeper", btoa(JSON.stringify(bog.beeper.fs.data)))
     },
     init: () => {
       if (!localStorage.getItem('bogbeeper')) {
@@ -428,7 +426,7 @@ var beeper = {
           messages: []
         })))
       }
-      beeper.fs.read()
+      bog.beeper.fs.read()
       
     }
     
@@ -437,19 +435,19 @@ var beeper = {
   navigation: {
     
     display: (e) => {
-      var active = beeper.handler[e].data.active
-      beeper.ui.display.data.a(beeper.handler[e].data.options[active].label)
-      beeper.ui.display.data.b(beeper.handler[e].data.options[active].glyph)        
+      var active = bog.beeper.handler[e].data.active
+      bog.beeper.ui.display.data.a(bog.beeper.handler[e].data.options[active].label)
+      bog.beeper.ui.display.data.b(bog.beeper.handler[e].data.options[active].glyph)        
     },
     
     control: (e) => {
-      if (beeper.handler[e].data.active < 0 ) {
-        beeper.handler[e].data.active = beeper.handler[e].data.options.length - 1
+      if (bog.beeper.handler[e].data.active < 0 ) {
+        bog.beeper.handler[e].data.active = bog.beeper.handler[e].data.options.length - 1
       }
-      else if (beeper.handler[e].data.active > (beeper.handler[e].data.options.length - 1) ) {
-        beeper.handler[e].data.active = 0
+      else if (bog.beeper.handler[e].data.active > (bog.beeper.handler[e].data.options.length - 1) ) {
+        bog.beeper.handler[e].data.active = 0
       }
-      beeper.navigation.display(e)
+      bog.beeper.navigation.display(e)
     }
     
   },  
@@ -460,13 +458,13 @@ var beeper = {
       
       init: () => {
         // clear all active scrolling timers
-        beeper.ui.display.feeder.timer.prescroll.a.clear()
-        beeper.ui.display.feeder.timer.prescroll.b.clear()
-        beeper.ui.display.feeder.timer.scroll.a.clear()
-        beeper.ui.display.feeder.timer.scroll.b.clear()
+        bog.beeper.ui.display.feeder.timer.prescroll.a.clear()
+        bog.beeper.ui.display.feeder.timer.prescroll.b.clear()
+        bog.beeper.ui.display.feeder.timer.scroll.a.clear()
+        bog.beeper.ui.display.feeder.timer.scroll.b.clear()
 
-        beeper.mode.status = "idle"
-        beeper.handler.messages.data.unread.calculate() 
+        bog.beeper.mode.status = "idle"
+        bog.beeper.handler.messages.data.unread.calculate() 
       }
       
     },
@@ -494,9 +492,9 @@ var beeper = {
       
       init: () => {
         
-        beeper.mode.status = "menu"
-        beeper.handler.menu.data.active = 2
-        beeper.navigation.display(beeper.mode.status)
+        bog.beeper.mode.status = "menu"
+        bog.beeper.handler.menu.data.active = 2
+        bog.beeper.navigation.display(bog.beeper.mode.status)
         
       },
             
@@ -506,29 +504,29 @@ var beeper = {
           
           (({
             "choose alert": () => {
-              beeper.handler.chime.init()
+              bog.beeper.handler.chime.init()
             },
             "settings": () => {
-              beeper.handler.settings.init()
+              bog.beeper.handler.settings.init()
             },
             "escape": () => {
-              beeper.handler.idle.init()
+              bog.beeper.handler.idle.init()
             },
-          })[beeper.handler[beeper.mode.status].data.options[beeper.handler[beeper.mode.status].data.active].label])()
+          })[bog.beeper.handler[bog.beeper.mode.status].data.options[bog.beeper.handler[bog.beeper.mode.status].data.active].label])()
           
         },
         
         left: () => {
           
-          beeper.handler.menu.data.active--
-          beeper.navigation.control(beeper.mode.status)
+          bog.beeper.handler.menu.data.active--
+          bog.beeper.navigation.control(bog.beeper.mode.status)
           
         },
         
         right: () => {
           
-          beeper.handler.menu.data.active++
-          beeper.navigation.control(beeper.mode.status)
+          bog.beeper.handler.menu.data.active++
+          bog.beeper.navigation.control(bog.beeper.mode.status)
           
         }
       
@@ -547,28 +545,28 @@ var beeper = {
         history: (x) => {
           // response array of old messages
           for ( var e=0; e < x.length; e++ ) {
-            beeper.handler.messages.data.upsert(x[e])
+            bog.beeper.handler.messages.data.upsert(x[e])
           }
-          beeper.handler.messages.data.unread.calculate()
+          bog.beeper.handler.messages.data.unread.calculate()
           
         },
         
         incoming: (e) => {
           
           // dont display 'new message' unless the phone is idle.
-          beeper.handler.messages.data.upsert(e)
-          beeper.ui.indiglo.flicker()
-          if (beeper.mode.status == "idle") {
-            beeper.ui.display.data.a("new message")
-            beeper.ui.display.data.b("")
+          bog.beeper.handler.messages.data.upsert(e)
+          bog.beeper.ui.indiglo.flicker()
+          if (bog.beeper.mode.status == "idle") {
+            bog.beeper.ui.display.data.a("new message")
+            bog.beeper.ui.display.data.b("")
           }
-          if (beeper.mode.status != "chime") {
-            beeper.handler.chime.tone.play(true)
+          if (bog.beeper.mode.status != "chime") {
+            bog.beeper.handler.chime.tone.play(true)
           }
           setTimeout(() => {
-            beeper.handler.messages.data.unread.calculate()
-            if (beeper.mode.status == "idle" && beeper.fs.data.autoopen) {
-              beeper.handler.messages.init()
+            bog.beeper.handler.messages.data.unread.calculate()
+            if (bog.beeper.mode.status == "idle" && bog.beeper.fs.data.autoopen) {
+              bog.beeper.handler.messages.init()
             }
           },1000)
           
@@ -581,12 +579,12 @@ var beeper = {
           
           // snub message > 200 char length and make safe for html
           // dump old messages > 500 messages in book
-          if ( $.grep(beeper.fs.data.messages, (x) => { return x.id === e.id }).length === 0 ) {
-            beeper.fs.data.messages.push(e)
-            if ( beeper.fs.data.messages.length >= 398 ) {
-              beeper.fs.data.messages.shift()
+          if ( $.grep(bog.beeper.fs.data.messages, (x) => { return x.id === e.id }).length === 0 ) {
+            bog.beeper.fs.data.messages.push(e)
+            if ( bog.beeper.fs.data.messages.length >= 398 ) {
+              bog.beeper.fs.data.messages.shift()
             }
-            beeper.fs.write()
+            bog.beeper.fs.write()
           }
           // otherwise snub.. already exists in history
         },
@@ -596,20 +594,20 @@ var beeper = {
           count: 0,
           calculate: () => {
             var unread = 0
-            for (var e=0;e<beeper.fs.data.messages.length;e++) {
-              if ( beeper.fs.data.messages[e].unread ) {
+            for (var e=0;e<bog.beeper.fs.data.messages.length;e++) {
+              if ( bog.beeper.fs.data.messages[e].unread ) {
                 unread++
               }
             }
-            beeper.handler.messages.data.unread.count = unread
-            beeper.handler.messages.data.unread.display()
+            bog.beeper.handler.messages.data.unread.count = unread
+            bog.beeper.handler.messages.data.unread.display()
           },
           display: () => {
-            if (beeper.mode.status == "idle") {
-              beeper.ui.display.data.a("☺")
-              var unread = beeper.handler.messages.data.unread.count
-              var total = beeper.fs.data.messages.length
-              beeper.ui.display.data.b(`${unread}/${total}`)
+            if (bog.beeper.mode.status == "idle") {
+              bog.beeper.ui.display.data.a("☺")
+              var unread = bog.beeper.handler.messages.data.unread.count
+              var total = bog.beeper.fs.data.messages.length
+              bog.beeper.ui.display.data.b(`${unread}/${total}`)
             }
           }
           
@@ -625,15 +623,15 @@ var beeper = {
           status: null,
           datetime: null,
           toggle: () => {
-            beeper.mode.datetime = !beeper.mode.datetime
-            beeper.handler.messages.inbox.toggler.display()
+            bog.beeper.mode.datetime = !bog.beeper.mode.datetime
+            bog.beeper.handler.messages.inbox.toggler.display()
           },
           display: () => {
-            if (beeper.mode.datetime) {
-              beeper.ui.display.data.a(beeper.handler.messages.inbox.toggler.datetime)
+            if (bog.beeper.mode.datetime) {
+              bog.beeper.ui.display.data.a(bog.beeper.handler.messages.inbox.toggler.datetime)
             }
             else {
-              beeper.ui.display.data.a(beeper.handler.messages.inbox.toggler.status)  
+              bog.beeper.ui.display.data.a(bog.beeper.handler.messages.inbox.toggler.status)  
             }            
           }
         },
@@ -641,35 +639,35 @@ var beeper = {
           
           // display current count
           
-          var e = beeper.handler.messages.inbox.data[beeper.handler.messages.inbox.count]
+          var e = bog.beeper.handler.messages.inbox.data[bog.beeper.handler.messages.inbox.count]
           var stat = ( e.unread == true ) ? "◘" : " "
           var id = e.id
           // keep inbox message set to unread but make it read in the filesystem
           // update fs
           var p = 0
-          $.grep(beeper.fs.data.messages, (x) => {
+          $.grep(bog.beeper.fs.data.messages, (x) => {
             p++
             if ( x.id === e.id ) {
-              beeper.fs.data.messages[p - 1].unread = false
-              beeper.fs.write()
+              bog.beeper.fs.data.messages[p - 1].unread = false
+              bog.beeper.fs.write()
             } 
           })
           // grep message in fs and mark as unread..
           // reason for splitting master fs and inbox fs is if someone sends a message
           // while youre in the message area.. dont want to interrupt the live count
-          var count = beeper.handler.messages.inbox.count + 1
-          var total = beeper.handler.messages.inbox.data.length
+          var count = bog.beeper.handler.messages.inbox.count + 1
+          var total = bog.beeper.handler.messages.inbox.data.length
           var tl = total.toString().length
           var cl = count.toString().length
           var sp = " ".repeat(16 - (4 + cl))
 
-          if (beeper.handler.messages.inbox.data.length - 1 == 0) {
+          if (bog.beeper.handler.messages.inbox.data.length - 1 == 0) {
             var direction = "↨"
           }
-          else if (beeper.handler.messages.inbox.count >= beeper.handler.messages.inbox.data.length - 1) {
+          else if (bog.beeper.handler.messages.inbox.count >= bog.beeper.handler.messages.inbox.data.length - 1) {
             var direction = "↓"
           }
-          else if (beeper.handler.messages.inbox.count <= 0) {
+          else if (bog.beeper.handler.messages.inbox.count <= 0) {
             var direction = "↑"
           }
           else {
@@ -683,24 +681,24 @@ var beeper = {
           var minute = ("0" + new Date(ctime).getMinutes()).slice(-2)
 
           
-          beeper.handler.messages.inbox.toggler.datetime = `>${stat} ${month}/${day} ${hour}:${minute} ${direction}`
-          beeper.handler.messages.inbox.toggler.status = `>${stat}${sp}${count} ${direction}`
-          beeper.handler.messages.inbox.toggler.display()
+          bog.beeper.handler.messages.inbox.toggler.datetime = `>${stat} ${month}/${day} ${hour}:${minute} ${direction}`
+          bog.beeper.handler.messages.inbox.toggler.status = `>${stat}${sp}${count} ${direction}`
+          bog.beeper.handler.messages.inbox.toggler.display()
           
-          beeper.ui.display.feeder.feed(decodeURIComponent(e.message), "b")
+          bog.beeper.ui.display.feeder.feed(decodeURIComponent(e.message), "b")
         },        
       },      
       
       init: () => {
         
-        beeper.mode.status = "messages"
+        bog.beeper.mode.status = "messages"
         
         // build message array to be viewed
-        beeper.handler.messages.inbox.data = beeper.fs.data.messages
+        bog.beeper.handler.messages.inbox.data = bog.beeper.fs.data.messages
         // count needs to be the number of messages to start.. prevent from going into inf/-1 with limiter
-        beeper.handler.messages.inbox.count = beeper.fs.data.messages.length - 1
+        bog.beeper.handler.messages.inbox.count = bog.beeper.fs.data.messages.length - 1
         
-        beeper.handler.messages.inbox.display()
+        bog.beeper.handler.messages.inbox.display()
         
       },
       
@@ -710,30 +708,30 @@ var beeper = {
           
           (({
             "up": () => {
-              if (beeper.handler.messages.inbox.count >= beeper.fs.data.messages.length - 1 ) {
+              if (bog.beeper.handler.messages.inbox.count >= bog.beeper.fs.data.messages.length - 1 ) {
                 return
               }
               else {
-                beeper.handler.messages.inbox.count++
+                bog.beeper.handler.messages.inbox.count++
               }
             },
             "down": () => {
-              if (beeper.handler.messages.inbox.count <= 0 ) {
+              if (bog.beeper.handler.messages.inbox.count <= 0 ) {
                 return
               }
               else {
-                beeper.handler.messages.inbox.count--
+                bog.beeper.handler.messages.inbox.count--
               }
             }
           })[y])();
-          beeper.handler.messages.inbox.display()
+          bog.beeper.handler.messages.inbox.display()
         },
         
         left: () => {
-          beeper.handler.messages.inbox.toggler.toggle()
+          bog.beeper.handler.messages.inbox.toggler.toggle()
         },
         right: () => {
-          beeper.handler.messages.inbox.toggler.toggle()
+          bog.beeper.handler.messages.inbox.toggler.toggle()
         },
         
       },
@@ -748,17 +746,17 @@ var beeper = {
         data: null,
         play: (newmessage) => {
           if (newmessage) {
-            var sound = beeper.fs.data.settings.chime
+            var sound = bog.beeper.fs.data.settings.chime
           }
           else {
-            var sound = beeper.handler.chime.data.active
+            var sound = bog.beeper.handler.chime.data.active
           }
-          if (beeper.handler.chime.tone.data) {
-            beeper.handler.chime.tone.data.pause()
+          if (bog.beeper.handler.chime.tone.data) {
+            bog.beeper.handler.chime.tone.data.pause()
           }
-          if ( beeper.handler.chime.data.options[sound].label != "silent" ) {
-            beeper.handler.chime.tone.data = new Audio(`https://bog.jollo.org/au/beeper/${sound}.wav`)
-            beeper.handler.chime.tone.data.play()
+          if ( bog.beeper.handler.chime.data.options[sound].label != "silent" ) {
+            bog.beeper.handler.chime.tone.data = new Audio(`https://bog.jollo.org/au/beeper/${sound}.wav`)
+            bog.beeper.handler.chime.tone.data.play()
           }
         }
       },
@@ -804,31 +802,31 @@ var beeper = {
     
       init: () => {
         
-        beeper.mode.status = "chime"
-        beeper.handler.chime.data.active = beeper.fs.data.settings.chime
-        beeper.navigation.display(beeper.mode.status)
+        bog.beeper.mode.status = "chime"
+        bog.beeper.handler.chime.data.active = bog.beeper.fs.data.settings.chime
+        bog.beeper.navigation.display(bog.beeper.mode.status)
         
       },
       
       control: {
       
         select: () => {
-          beeper.fs.data.settings.chime = beeper.handler.chime.data.active
-          beeper.fs.write()
-          beeper.handler.chime.tone.play()
-          beeper.handler.idle.init()
+          bog.beeper.fs.data.settings.chime = bog.beeper.handler.chime.data.active
+          bog.beeper.fs.write()
+          bog.beeper.handler.chime.tone.play()
+          bog.beeper.handler.idle.init()
         },
         
         left: () => {
-          beeper.handler.chime.data.active--
-          beeper.navigation.control(beeper.mode.status)
-          beeper.handler.chime.tone.play()
+          bog.beeper.handler.chime.data.active--
+          bog.beeper.navigation.control(bog.beeper.mode.status)
+          bog.beeper.handler.chime.tone.play()
         },
         
         right: () => {
-          beeper.handler.chime.data.active++
-          beeper.navigation.control(beeper.mode.status)
-          beeper.handler.chime.tone.play()
+          bog.beeper.handler.chime.data.active++
+          bog.beeper.navigation.control(bog.beeper.mode.status)
+          bog.beeper.handler.chime.tone.play()
         }
       
       }      
@@ -880,46 +878,46 @@ var beeper = {
       },      
       
       init: () => {
-        beeper.mode.status = "settings"
-        beeper.handler.settings.data.active = 6
+        bog.beeper.mode.status = "settings"
+        bog.beeper.handler.settings.data.active = 6
         // build settings menu
-        for (var e = 0; e < beeper.handler.settings.data.options.length; e++ ) {
-          var name = beeper.handler.settings.data.options[e].name
-          var fsdata = beeper.fs.data.settings[name]
-          beeper.handler.settings.data.options[e].glyph = fsdata
+        for (var e = 0; e < bog.beeper.handler.settings.data.options.length; e++ ) {
+          var name = bog.beeper.handler.settings.data.options[e].name
+          var fsdata = bog.beeper.fs.data.settings[name]
+          bog.beeper.handler.settings.data.options[e].glyph = fsdata
         }
-        beeper.navigation.display(beeper.mode.status)
+        bog.beeper.navigation.display(bog.beeper.mode.status)
       },
       
       control: {
         select: () => {
           // save menu settings to fs
-          for (var e = 0; e < beeper.handler.settings.data.options.length; e++ ) {
-            var name = beeper.handler.settings.data.options[e].name
-            var selectdata = beeper.handler.settings.data.options[e].glyph
-            beeper.fs.data.settings[name] = selectdata
+          for (var e = 0; e < bog.beeper.handler.settings.data.options.length; e++ ) {
+            var name = bog.beeper.handler.settings.data.options[e].name
+            var selectdata = bog.beeper.handler.settings.data.options[e].glyph
+            bog.beeper.fs.data.settings[name] = selectdata
           }
-          beeper.fs.write()
+          bog.beeper.fs.write()
           // evaluate taehyung mode change
-          beeper.ui.transform()
-          beeper.ui.indiglo.timer.clear()
+          bog.beeper.ui.transform()
+          bog.beeper.ui.indiglo.timer.clear()
           $('#beeper').addClass("disabled")
-          beeper.ui.display.data.a("settings")
-          beeper.ui.display.data.b("saved")          
+          bog.beeper.ui.display.data.a("settings")
+          bog.beeper.ui.display.data.b("saved")          
           setTimeout(()=>{
             $('#beeper').removeClass("disabled")
-            beeper.handler.idle.init()
+            bog.beeper.handler.idle.init()
           },750)
         },
         
         left: () => {
-          beeper.handler.settings.data.active--
-          beeper.navigation.control(beeper.mode.status)
+          bog.beeper.handler.settings.data.active--
+          bog.beeper.navigation.control(bog.beeper.mode.status)
         },
         
         right: () => {
-          beeper.handler.settings.data.active++
-          beeper.navigation.control(beeper.mode.status)
+          bog.beeper.handler.settings.data.active++
+          bog.beeper.navigation.control(bog.beeper.mode.status)
         },
         
         pitch: (y) => {
@@ -927,50 +925,50 @@ var beeper = {
           // y is up/down
           (({
             "indiglo stay on": () => {
-              beeper.handler.settings.data.options[0].glyph = !beeper.handler.settings.data.options[0].glyph
+              bog.beeper.handler.settings.data.options[0].glyph = !bog.beeper.handler.settings.data.options[0].glyph
             },
             "idle timeout": () => {
-              var glyph = beeper.handler.settings.data.options[1].glyph
-              beeper.handler.settings.data.options[1].glyph = (y == "up") ? glyph + 2 : glyph - 2
-              if (beeper.handler.settings.data.options[1].glyph <= 6) {
-                beeper.handler.settings.data.options[1].glyph = 6
+              var glyph = bog.beeper.handler.settings.data.options[1].glyph
+              bog.beeper.handler.settings.data.options[1].glyph = (y == "up") ? glyph + 2 : glyph - 2
+              if (bog.beeper.handler.settings.data.options[1].glyph <= 6) {
+                bog.beeper.handler.settings.data.options[1].glyph = 6
               }
-              else if (beeper.handler.settings.data.options[1].glyph >= 120) {
-                beeper.handler.settings.data.options[1].glyph = 120
+              else if (bog.beeper.handler.settings.data.options[1].glyph >= 120) {
+                bog.beeper.handler.settings.data.options[1].glyph = 120
               }
             },
             "marquee speed": () => {
-              var glyph = beeper.handler.settings.data.options[2].glyph
-              beeper.handler.settings.data.options[2].glyph = (y == "up") ? glyph + 1 : glyph - 1
-              if (beeper.handler.settings.data.options[2].glyph <= 1) {
-                beeper.handler.settings.data.options[2].glyph = 1
+              var glyph = bog.beeper.handler.settings.data.options[2].glyph
+              bog.beeper.handler.settings.data.options[2].glyph = (y == "up") ? glyph + 1 : glyph - 1
+              if (bog.beeper.handler.settings.data.options[2].glyph <= 1) {
+                bog.beeper.handler.settings.data.options[2].glyph = 1
               }
-              else if (beeper.handler.settings.data.options[2].glyph >= 40) {
-                beeper.handler.settings.data.options[2].glyph = 40
+              else if (bog.beeper.handler.settings.data.options[2].glyph >= 40) {
+                bog.beeper.handler.settings.data.options[2].glyph = 40
               }
             },
             "marquee delay": () => {
-              var glyph = beeper.handler.settings.data.options[3].glyph
-              beeper.handler.settings.data.options[3].glyph = (y == "up") ? glyph + 1 : glyph - 1
-              if (beeper.handler.settings.data.options[3].glyph <= 1) {
-                beeper.handler.settings.data.options[3].glyph = 1
+              var glyph = bog.beeper.handler.settings.data.options[3].glyph
+              bog.beeper.handler.settings.data.options[3].glyph = (y == "up") ? glyph + 1 : glyph - 1
+              if (bog.beeper.handler.settings.data.options[3].glyph <= 1) {
+                bog.beeper.handler.settings.data.options[3].glyph = 1
               }
-              else if (beeper.handler.settings.data.options[3].glyph >= 10) {
-                beeper.handler.settings.data.options[3].glyph = 10
+              else if (bog.beeper.handler.settings.data.options[3].glyph >= 10) {
+                bog.beeper.handler.settings.data.options[3].glyph = 10
               }
             },
             "open on receive": () => {
-              beeper.handler.settings.data.options[4].glyph = !beeper.handler.settings.data.options[4].glyph
+              bog.beeper.handler.settings.data.options[4].glyph = !bog.beeper.handler.settings.data.options[4].glyph
             },
             "taehyung mode": () => {
-              beeper.handler.settings.data.options[5].glyph = !beeper.handler.settings.data.options[5].glyph
+              bog.beeper.handler.settings.data.options[5].glyph = !bog.beeper.handler.settings.data.options[5].glyph
             },
             "daytime indiglo": () => {
-              beeper.handler.settings.data.options[6].glyph = !beeper.handler.settings.data.options[6].glyph
+              bog.beeper.handler.settings.data.options[6].glyph = !bog.beeper.handler.settings.data.options[6].glyph
             },
             
-          })[beeper.handler[beeper.mode.status].data.options[beeper.handler[beeper.mode.status].data.active].label] || (() => {  } ))()
-          beeper.navigation.display(beeper.mode.status)
+          })[bog.beeper.handler[bog.beeper.mode.status].data.options[bog.beeper.handler[bog.beeper.mode.status].data.active].label] || (() => {  } ))()
+          bog.beeper.navigation.display(bog.beeper.mode.status)
           
         }
       
@@ -987,33 +985,33 @@ var beeper = {
     drag: false,
     listeners: () => {
       $(document).on('click','#beeper button',(e)=>{
-        // kill message scrolling with beeper.ui.display.feeder.timer.b.clear()
+        // kill message scrolling with bog.beeper.ui.display.feeder.timer.b.clear()
         // handle delay in going back to the idle screen
-        beeper.ui.sleep.timer.renew()
+        bog.beeper.ui.sleep.timer.renew()
         // handle night time indiglo
-        if ( $('html').hasClass("night") || beeper.fs.data.settings.daytime ) {
-          beeper.ui.indiglo.timer.renew()
-          beeper.ui.indiglo.on()
+        if ( $('html').hasClass("night") || bog.beeper.fs.data.settings.daytime ) {
+          bog.beeper.ui.indiglo.timer.renew()
+          bog.beeper.ui.indiglo.on()
         }
-        beeper.button[e.currentTarget.classList.value]()
+        bog.beeper.button[e.currentTarget.classList.value]()
       })
       $(document).on('mousedown','#beeper',()=>{
-        beeper.events.drag = false
+        bog.beeper.events.drag = false
       })
       $(document).on('mousemove','#beeper',()=>{
-        beeper.events.drag = true
+        bog.beeper.events.drag = true
       })
       $(document).on('mouseup','#beeper',()=>{
-        if (beeper.events.drag) {
-          beeper.fs.data.settings.offsetleft = $('#beeper').offset().left
-          beeper.fs.data.settings.offsettop = $('#beeper').offset().top
-          beeper.fs.write()
+        if (bog.beeper.events.drag) {
+          bog.beeper.fs.data.settings.offsetleft = $('#beeper').offset().left
+          bog.beeper.fs.data.settings.offsettop = $('#beeper').offset().top
+          bog.beeper.fs.write()
         }
-        beeper.events.drag = false
+        bog.beeper.events.drag = false
       })
     }
   }
   
 }
 
-beeper.init()
+bog.beeper.init()
