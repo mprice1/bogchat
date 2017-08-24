@@ -37,15 +37,18 @@ function doomsounds(enter) {
   var ctime = (+new Date())
   if ((ctime - lastdoomsound) > 10000) {
     lastdoomsound = ctime
-    if (enter) {
-      if (!$('#mutebutton').hasClass("doommute")) {
-        new Audio('https://bog.jollo.org/au/enter.mp3').play()
-      }    
-    }
-    else {
-      if (!$('#mutebutton').hasClass("doommute")) {
-        new Audio('https://bog.jollo.org/au/exit.mp3').play()
-      }    
+    // only play on desktop
+    if ($('#sendbutton').css('display') == "none") {
+      if (enter) {
+        if (!$('#mutebutton').hasClass("doommute")) {
+          new Audio('https://bog.jollo.org/au/enter.mp3').play()
+        }    
+      }
+      else {
+        if (!$('#mutebutton').hasClass("doommute")) {
+          new Audio('https://bog.jollo.org/au/exit.mp3').play()
+        }    
+      }   
     }    
   }
 }
@@ -162,14 +165,21 @@ function startwebsocket() {
           }
           else {
             var locale = (json.data[i].locale ) ? json.data[i].locale : ""
-            var zoo = (json.data[i].zoo ) ? json.data[i].zoo : ""
-            addMessage(locale, json.data[i].author, json.data[i].text, json.data[i].color, json.data[i].id, json.data[i].zoo)
+            var zoo = (json.data[i].zoo ) ? json.data[i].zoo : false
+            if (json.data[i] && json.data[i].draw) {
+              var draw = json.data[i].draw
+            }
+            else {
+              var draw = false
+            }
+
+            addMessage(locale, json.data[i].author, json.data[i].text, json.data[i].color, json.data[i].id, zoo, draw)
           }
         }
         $('#content').scrollTop(200000)
       },
       message: () => {
-        var zoo = (json.data.zoo ) ? json.data.zoo : ""
+        var zoo = (json.data.zoo ) ? json.data.zoo : false
         if (visible === false  && !zoo) {
           unread++
           if (json.data.text.includes(myname)) {
@@ -178,9 +188,14 @@ function startwebsocket() {
           $('#title').html(`${mentionstar}(${unseenfavbundle}${unread}) bogchat`)
         }
         input.removeAttr('disabled')
-        var locale = (json.data.locale ) ? json.data.locale : ""
-        
-        addMessage(locale, json.data.author, json.data.text, json.data.color, json.data.id, json.data.zoo)
+        var locale = (json.data.locale) ? json.data.locale : ""
+            if (json.data && json.data.draw) {
+              var draw = json.data.draw
+            }
+            else {
+              var draw = false
+            }
+        addMessage(locale, json.data.author, json.data.text, json.data.color, json.data.id, zoo, draw)
         setTimeout(function() {
           if ( ($('#content p:last-of-type').offset().top - $('#content').height()) > 100 ) {
             // console.log("avoid scrolldown")

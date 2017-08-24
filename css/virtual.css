@@ -1,0 +1,155 @@
+@font-face {
+    font-family: 'press_startregular';
+    src: url('https://bog.jollo.org/css/fonts/zeldadxttbrk-webfont.woff2') format('woff2'),
+         url('https://bog.jollo.org/css/fonts/zeldadxttbrk-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html.virtualboy.night body {
+  background-image:none!important;
+  background-color:black!important;
+}
+
+html.virtualboy.night body::after {
+  background:black;
+  filter:brightness(50%);
+  background-position:center;
+  content:'';
+  top:0;
+  left:0;
+  position:fixed;
+  width:100vw;
+  height:100vh;
+  z-index:-1;
+  mix-blend-mode:none
+}
+
+html.virtualboy.night img {
+  filter:saturate(20%) hue-rotate(-90deg)!important;
+  transform:skew(0deg);
+  max-height:222px!important;
+
+}
+
+html.virtualboy.night span.nick, html.virtualboy.night p {
+  line-height:28px;
+  font-family:'press_startregular';
+  font-size:16px;
+  letter-spacing:-2px;
+  color:red!important;
+  font-weight:bold;
+}
+
+html.virtualboy.night span img {
+  filter:invert(1)!important
+}
+
+html.virtualboy.night span.nick {
+  font-size:17px;
+  color:red!important;
+}
+
+html.virtualboy.night body div div p span.nick[style="color:orangered"], html.virtualboy.night body div div p span.nick[style="color:orangered;"] {
+    color: red !important;
+}
+
+html.virtualboy.night body div div p span.nick[style="color:red"], html.virtualboy.night  body div div p span.nick[style="color:red;"] {
+    color: red !important;
+}
+
+html.virtualboy.night body div div p span.nick[style="color:blue"], html.virtualboy.night  body div div p span.nick[style="color:blue;"] {
+    color: red !important;
+}
+
+html.virtualboy.night * {
+  cursor: url(https://bog.jollo.org/css/Red1.cur), auto!important;
+}
+@font-face {
+    font-family: 'ravenna';
+    src: url('https://bog.jollo.org/css/fonts/ravenna-webfont.woff2?') format('woff2'),
+         url('https://bog.jollo.org/css/fonts/ravenna-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html.virtualboy.night #input {
+  font-family:'ravenna';
+  color:pink!important;
+  letter-spacing:2px;
+  font-size:20px!important;
+}
+/*
+html.virtualboy.night #msg {
+  border-left:2px solid black!important;
+  border-bottom:2px solid black!important;
+}
+*/
+html.virtualboy.night input#input {
+  filter:contrast(500%);
+  width: calc(100vw - 236px);
+}
+
+html.virtualboy.night [id*="button"] {
+  filter:contrast(150%) hue-rotate(0deg);
+}
+
+html.virtualboy.night #bin [id*="button"] {
+  filter:contrast(150%) hue-rotate(90deg);
+}
+
+html.virtualboy.night #uploadbutton {
+  filter:invert(1) brightness(200%)
+}
+
+html.virtualboy.night #storedbutton {
+  background: url(https://bog.jollo.org/css/image/smileynight.gif);
+  background-size: cover;
+}
+
+html.virtualboy.night #lockbutton {
+  filter:brightness(100%) invert(1) contrast(200%) hue-rotate(80deg)
+}
+
+html.virtualboy.night #binbutton {
+  filter:hue-rotate(280deg) contrast(150%)
+}
+
+html.virtualboy.night body::before {
+  content:'';
+  position:fixed;
+  top:0;
+  left:0;
+  width:100vw;
+  pointer-events:none;
+  height:100vw;
+  background:#ef0101;
+  z-index:3;
+  mix-blend-mode:multiply
+}
+
+html.virtualboy.night #zoo {
+  filter:hue-rotate(-130deg)!important;
+}
+
+html.virtualboy.night #beeper, html.virtualboy.night #radiohud, html.virtualboy.night #radioeject {
+  filter:hue-rotate(90deg)
+}
+
+html.virtualboy.night img {
+  image-rendering:pixelated!important
+}
+
+html.virtualboy.night #content {
+  border: 5px solid black!important;
+  transform: scale(.86);
+  box-shadow: 0px 0px 0px 2px white;
+}
+
+html.virtualboy.night p {
+  margin:0px 2px!important
+}
+
+html.virtualboy.night div.bubble {
+  filter:brightness(500%)
+}

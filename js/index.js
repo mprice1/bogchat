@@ -38,29 +38,7 @@ document.body.innerHTML = `
       <div id="togglerapidtosave" title="toggle rapid-fav-to-save"></div>
     </div>
   </div>
-  <div id="msg">
-    <div id="modem">
-      <div class="led send">     </div>
-      <div class="led receive">  </div>
-      <div class="led power">    </div>
-    </div>
-    <span id="status">connecting...</span>
-    <input type="text" spellcheck=false id="input" disabled="disabled" />
-    <div id="storedbutton" ondragenter="dragpopup()"></div>
-    <div id="trashlock"></div>
-    <div id="storedarea">
-      <div id="storedcontainer"></div>
-      <input id="storedinput" type="text">
-    </div>
-    <div id="popbutton"></div>
-    <div id="sendbutton"></div>
-    <div id="uploadbutton"></div>
-    <div id="stickerbutton"></div>
-    <div id="lockbutton"></div>
-    <div id="binbutton"></div>
-    <div id="mutebutton"></div>
-    <div id="favcurrenttrackbutton"></div>
-    <div id="radiobutton"></div>
+  <div id="radio">
     <div id="radioeject" class="ejected closed">
       <div id="radioejectdisplay">
         <div id="radioejectdisplaycontent">
@@ -85,11 +63,42 @@ document.body.innerHTML = `
       <div id="radiominremain">x?</div>
     </div>
   </div>
+  <div id="bogdraw"></div>
+  <div id="msg">
+    <div id="modem">
+      <div class="led send"></div>
+      <div class="led receive"></div>
+      <div class="led power"></div>
+    </div>
+    <span id="status">connecting...</span>
+    <input type="text" spellcheck=false id="input" disabled="disabled" />
+    <div id="bogbuttons">
+      <div id="quickstoragebuttonarea">
+        <div id="storedbutton" ondragenter="dragpopup()"></div>
+        <div id="trashlock"></div>
+        <div id="storedarea">
+          <div id="storedcontainer"></div>
+          <input id="storedinput" type="text">
+        </div>
+      </div>  
+      <div id="uploadbutton"></div>
+      <div id="stickerbutton"></div>
+      <div id="lockbutton"></div>
+      <div id="binbutton"></div>
+      <div id="mutefavbuttonarea">
+        <div id="mutebutton"></div>
+        <div id="favcurrenttrackbutton"></div>
+        <div id="radiobutton"></div>
+      </div>
+      <div id="sendbutton"></div>
+      <div id="popbutton"></div>    
+    </div>
+  </div>
   <input id="fileinput" accept="image/*" type="file" onchange="pushfile()">
 `
 
 
-// out of order or depreciated: "draw", "drums", "fidget", "hamster"
+// out of order or depreciated: "draw", "drums", "fidget", "hamster", "pak"
 // neue todo: "draw", "drums", "superbar"
 var bogmodsdesktop = [
   "pepper",
@@ -108,8 +117,8 @@ var bogmodsdesktop = [
   "images",
   "breakapart",
   "bubbles",
-  "pak",
-  "mobile"
+  "mobile",
+  "draw"
 ]
 
 for (var f=0;f<bogmodsdesktop.length;f++) {

@@ -1,15 +1,20 @@
-body {
-  background-image:none!important;
-  background-color:black!important;
-  background: black!important;
+@font-face {
+    font-family: 'press_startregular';
+    src: url('https://bog.jollo.org/css/fonts/zeldadxttbrk-webfont.woff2') format('woff2'),
+         url('https://bog.jollo.org/css/fonts/zeldadxttbrk-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
+html.virtualboy.night body {
+  background-image:none!important;
+  background-color:black!important;
 
+}
 
-body::after {
+html.virtualboy.night body::after {
   background:black;
-
- 
+  filter:brightness(50%);
   background-position:center;
   content:'';
   top:0;
@@ -21,9 +26,88 @@ body::after {
   mix-blend-mode:none
 }
 
+html.virtualboy.night img {
+  filter:hue-rotate(-300deg)!important;
+  transform:skew(0deg);
+  max-height:200px!important;
 
+}
 
-body::before {
+html.virtualboy.night span.nick, p {
+  line-height:28px;
+  font-family:'press_startregular';
+  font-size:16px;
+  letter-spacing:-2px;
+  color:red!important;
+  font-weight:bold;
+}
+
+html.virtualboy.night span img {
+  filter:invert(1)!important
+}
+
+html.virtualboy.night span.nick {
+  font-size:17px;
+  color:red!important;
+}
+
+html.virtualboy.night html.night body div div p span.nick[style="color:orangered"], html.night body div div p span.nick[style="color:orangered;"] {
+    color: red !important;
+}
+
+html.virtualboy.night html.night body div div p span.nick[style="color:red"], html.night body div div p span.nick[style="color:red;"] {
+    color: red !important;
+}
+
+html.virtualboy.night html.night body div div p span.nick[style="color:blue"], html.night body div div p span.nick[style="color:blue;"] {
+    color: red !important;
+}
+
+@font-face {
+	font-family: 'hylian';
+	src: url('https://bog.jollo.org/css/fonts/hylian.ttf?') format('truetype');
+}
+
+html.virtualboy.night #input {
+  font-family:'press_startregular';
+  color:white!important;
+  letter-spacing:-2px;
+  font-size:29px!important;
+  border:2px solid BLACK!important;
+  border-right:4px solid BLACK!important;
+  border-left:2px solid black!important;
+}
+/*
+html.virtualboy.night #msg {
+  border-left:2px solid black!important;
+  border-bottom:2px solid black!important;
+}
+*/
+html.virtualboy.night input#input {
+  filter:contrast(500%)
+}
+
+html.virtualboy.night [id*="button"] {
+  filter:contrast(150%) hue-rotate(0deg);
+}
+
+html.virtualboy.night #bin [id*="button"] {
+  filter:contrast(150%) hue-rotate(90deg);
+}
+
+html.virtualboy.night #uploadbutton {
+  filter:invert(1) brightness(200%)
+}
+
+html.virtualboy.night #lockbutton {
+  filter:brightness(100%) invert(1) contrast(200%) hue-rotate(80deg)
+}
+
+html.virtualboy.night #binbutton {
+  filter:hue-rotate(280deg) contrast(150%)
+}
+
+html.virtualboy.night body::before {
   content:'';
   position:fixed;
   top:0;
@@ -31,59 +115,31 @@ body::before {
   width:100vw;
   pointer-events:none;
   height:100vw;
-  background:red;
-  z-index:999999;
+  background:#ef0101;
+  z-index:3;
   mix-blend-mode:multiply
 }
 
-span.nick, p {
-  color:white!important
+html.virtualboy.night #zoo {
+  filter:hue-rotate(-130deg)!important;
 }
 
-#content {
-  border-color:black!important;
+html.virtualboy.night #beeper, #radiohud, #radioeject {
+  filter:hue-rotate(90deg)
 }
 
-html.night body div div p span.nick[style="color:orangered"], html.night body div div p span.nick[style="color:orangered;"] {
-    color: #ffffff !important;
+html.virtualboy.night img {
+  image-rendering:pixelated!important
 }
 
-html.night body div div p span.nick[style="color:red"], html.night body div div p span.nick[style="color:red;"] {
-    color: #ffffff !important;
+html.virtualboy.night #content {
+  border: 5px solid black!important;
 }
 
-html.night body div div p span.nick[style="color:blue"], html.night body div div p span.nick[style="color:blue;"] {
-    color: #ffffff !important;
+html.virtualboy.night p {
+  margin:0px 2px!important
 }
 
-img {
-  filter:hue-rotate(180deg)!important;
-  transform:skew(1deg);
-  max-height:200px!important;
-}
-
-
-#content {
-  transform:scale(.89)
-}
-
-#beeper, #radiohud, #radioeject {
-  filter: contrast(90%)  hue-rotate(180deg)
-}
-
-body {
-  filter: contrast(130%)
-}
-
-@font-face {
-font-family: 'Mortal Kombat 1';
-font-style: normal;
-font-weight: normal;
-src: local('Mortal Kombat 1'), url('./fonts/mk1.woff') format('woff');
-}
-
-p, span.nick {
-  font-family:'Mortal Kombat 1';
-  font-size:30px!important;
-  font-weight:normal!important
+html.virtualboy.night div.bubble {
+  filter:brightness(500%)
 }

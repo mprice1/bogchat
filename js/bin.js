@@ -21,8 +21,8 @@ function bintoggle() {
   if ($('body').hasClass("drum")) {
     $('body').removeClass('drum')
   }
-  if ($('body').hasClass("draw")) {
-    $('body').removeClass('draw')
+  if ($('html').hasClass("draw")) {
+    $('html').removeClass('draw')
   }
   $('body').toggleClass("image")
   $('#binbutton').toggleClass("locked")

@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+<head>
+<style>
+@font-face {
+    font-family: 'press_startregular';
+    src: url('zeldadxttbrk-webfont.woff2') format('woff2'),
+         url('https://bog.jollo.org/css/fonts/zeldadxttbrk-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.bogdrawtoolbox, body {
+  font-family: 'press_startregular';
+  font-weight:bold
+}
+
+body {
+  margin:0;
+}
+.bogdrawtoolbox {
+    border: 2px inset #ffffff;
+    display: inline-block;
+    padding: 3px;
+    width: 77px;
+    background: #f8f8f8;
+}
+
+.bogdrawtools {
+  width:100px;
+  font-size: 0;
+  margin: 0;
+  padding: 0;  
+}
+
+.bogdrawtools div {
+  width:32px;
+  height:32px;
+  border:3px outset white;
+  background:white;
+  display:inline-block;
+  
+}
+
+.bogdrawtools span {
+  display:block;
+}
+
+div.bogdrawicon.marquee {
+  background:url(https://bog.jollo.org/draw/icons/icon_marquee.png)
+}
+div.bogdrawicon.move {
+  background:url(https://bog.jollo.org/draw/icons/icon_move.png)
+}
+div.bogdrawicon.pen {
+  background:url(https://bog.jollo.org/draw/icons/icon_pen.png)
+}
+div.bogdrawicon.pencil {
+  background:url(https://bog.jollo.org/draw/icons/icon_pencil.png)
+}
+div.bogdrawicon.airbrush {
+  background:url(https://bog.jollo.org/draw/icons/icon_airbrush.png)
+}
+div.bogdrawicon.watercolor {
+  background:url(https://bog.jollo.org/draw/icons/icon_watercolor.png)
+}
+div.bogdrawicon.fillbucket {
+  background:url(https://bog.jollo.org/draw/icons/icon_fill.png)
+}
+div.bogdrawicon.drop {
+  background:url(https://bog.jollo.org/draw/icons/icon_eyedropper.png)
+}
+div.bogdrawicon.harderaser {
+  background:url(https://bog.jollo.org/draw/icons/icon_harderaser.png)
+}
+div.bogdrawicon.softeraser {
+  background:url(https://bog.jollo.org/draw/icons/icon_softeraser.png)
+}
+div.bogdrawicon.blender {
+  background:url(https://bog.jollo.org/draw/icons/icon_blender.png)
+}
+div.bogdrawicon.smudge {
+  background:url(https://bog.jollo.org/draw/icons/icon_smudge.png)
+}
+div.bogdrawicon.dodge {
+  background:url(https://bog.jollo.org/draw/icons/icon_dodge.png)
+}
+div.bogdrawicon.burn {
+  background:url(https://bog.jollo.org/draw/icons/icon_burn.png)
+}
+div.bogdrawicon.invert {
+  background:url(https://bog.jollo.org/draw/icons/icon_invert.png)
+}
+div.bogdrawicon.blur {
+  background:url(https://bog.jollo.org/draw/icons/icon_blur.png)
+}
+div.bogdrawicon.colornoise {
+  background:url(https://bog.jollo.org/draw/icons/icon_rainbownoise.png)
+}
+div.bogdrawicon.mononoise {
+  background:url(https://bog.jollo.org/draw/icons/icon_monochrome.png)
+}
+div.bogdrawicon.undo {
+  background:url(https://bog.jollo.org/draw/icons/icon_undo.png)
+}
+div.bogdrawicon.redo {
+  background:url(https://bog.jollo.org/draw/icons/icon_redo.png)
+}
+div.bogdrawicon.straightline {
+  background:url(https://bog.jollo.org/draw/icons/icon_straightline.png)
+}
+div.bogdrawicon.freehand  {
+  background:url(https://bog.jollo.org/draw/icons/icon_freestyleline.png)
+}
+</style>
+</head>
+<body>
+<div class="bogdrawtoolbox">
+<div class="bogdrawtools">
+  <div class="bogdrawicon marquee"></div>
+  <div class="bogdrawicon move"></div>
+  <span class="bogdrawseperator"></span>
+  <div class="bogdrawicon pen"></div>
+  <div class="bogdrawicon pencil"></div>
+  <div class="bogdrawicon airbrush"></div>
+  <div class="bogdrawicon watercolor"></div>
+  <div class="bogdrawicon fillbucket"></div>
+  <div class="bogdrawicon drop"></div>
+  <div class="bogdrawicon harderaser"></div>
+  <div class="bogdrawicon softeraser"></div>
+  <div class="bogdrawicon blender"></div>
+  <div class="bogdrawicon smudge"></div>
+  <div class="bogdrawicon dodge"></div>
+  <div class="bogdrawicon burn"></div>
+  <span class="bogdrawseperator"></span>
+  <div class="bogdrawicon invert"></div>
+  <div class="bogdrawicon blur"></div>
+  <span class="bogdrawseperator"></span>
+  <div class="bogdrawicon colornoise"></div>
+  <div class="bogdrawicon mononoise"></div>
+  <span class="bogdrawseperator"></span>
+  <div class="bogdrawicon undo"></div>
+  <div class="bogdrawicon redo"></div>
+  <span class="bogdrawseperator"></span>
+  <div class="bogdrawicon straightline"></div>
+  <div class="bogdrawicon freehand"></div>  
+</div>
+</div>
+<script>
+
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.freehand', ()=>{
+  $('#chickenpaint-parent > div > .bogdrawicon.chickenpaint-palettes > .bogdrawicon.chickenpaint-palette.chickenpaint-palette-stroke > .bogdrawicon.chickenpaint-palette-body > ul > li.chickenpaint-toolbar-button.chickenpaint-tool-freehand').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.straightline', ()=>{
+  $('#chickenpaint-parent > div > .bogdrawicon.chickenpaint-palettes > .bogdrawicon.chickenpaint-palette.chickenpaint-palette-stroke > .bogdrawicon.chickenpaint-palette-body > ul > li.chickenpaint-toolbar-button.chickenpaint-tool-line').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.undo', ()=>{
+  $('#chickenpaint-parent > div > .bogdrawicon.chickenpaint-palettes > .bogdrawicon.chickenpaint-palette.chickenpaint-palette-misc > .bogdrawicon.chickenpaint-palette-body > ul > li.chickenpaint-toolbar-button.chickenpaint-tool-undo').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.redo', ()=>{
+  $('#chickenpaint-parent > div > .bogdrawicon.chickenpaint-palettes > .bogdrawicon.chickenpaint-palette.chickenpaint-palette-misc > .bogdrawicon.chickenpaint-palette-body > ul > li.chickenpaint-toolbar-button.chickenpaint-tool-redo').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.colornoise', ()=>{
+  $('#chickenpaint-parent > nav > div > ul > li.dropdown.open > ul > li:nth-child(10) > a').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.mononoise', ()=>{
+  $('#chickenpaint-parent > nav > div > ul > li.dropdown.open > ul > li:nth-child(9) > a').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.invert', ()=>{
+  $('#chickenpaint-parent > nav > div > ul > li.dropdown.open > ul > li:nth-child(5) > a').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.blur', ()=>{
+  $('#chickenpaint-parent > nav > div > ul > li.dropdown.open > ul > li:nth-child(7) > a').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.marquee', ()=>{
+  $('#chickenpaint-parent > div > .bogdrawicon.chickenpaint-palettes > .bogdrawicon.chickenpaint-palette.chickenpaint-palette-tool > .bogdrawicon.chickenpaint-palette-body > ul > li.chickenpaint-toolbar-button.chickenpaint-tool-rect-selection').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.move', ()=>{
+  $('#chickenpaint-parent > div > .bogdrawicon.chickenpaint-palettes > .bogdrawicon.chickenpaint-palette.chickenpaint-palette-tool > .bogdrawicon.chickenpaint-palette-body > ul > li.chickenpaint-toolbar-button.chickenpaint-tool-move').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.pen', ()=>{
+  $('#chickenpaint-parent > div > .bogdrawicon.chickenpaint-palettes > .bogdrawicon.chickenpaint-palette.chickenpaint-palette-tool > .bogdrawicon.chickenpaint-palette-body > ul > li.chickenpaint-toolbar-button.chickenpaint-tool-pen').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.pencil', ()=>{
+  $('#chickenpaint-parent > div > .bogdrawicon.chickenpaint-palettes > .bogdrawicon.chickenpaint-palette.chickenpaint-palette-tool > .bogdrawicon.chickenpaint-palette-body > ul > li.chickenpaint-toolbar-button.chickenpaint-tool-pencil').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.airbrush', ()=>{
+  $('#chickenpaint-parent > div > .bogdrawicon.chickenpaint-palettes > .bogdrawicon.chickenpaint-palette.chickenpaint-palette-tool > .bogdrawicon.chickenpaint-palette-body > ul > li.chickenpaint-toolbar-button.chickenpaint-tool-airbrush').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.watercolor', ()=>{
+  $('#chickenpaint-parent > div > .bogdrawicon.chickenpaint-palettes > .bogdrawicon.chickenpaint-palette.chickenpaint-palette-tool > .bogdrawicon.chickenpaint-palette-body > ul > li.chickenpaint-toolbar-button.chickenpaint-tool-water').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.fillbucket', ()=>{
+  $('#chickenpaint-parent > div > .bogdrawicon.chickenpaint-palettes > .bogdrawicon.chickenpaint-palette.chickenpaint-palette-tool > .bogdrawicon.chickenpaint-palette-body > ul > li.chickenpaint-toolbar-button.chickenpaint-tool-flood-fill').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.drop', ()=>{
+  $('#chickenpaint-parent > div > .bogdrawicon.chickenpaint-palettes > .bogdrawicon.chickenpaint-palette.chickenpaint-palette-tool > .bogdrawicon.chickenpaint-palette-body > ul > li.chickenpaint-toolbar-button.chickenpaint-tool-color-picker').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.harderaser', ()=>{
+  $('#chickenpaint-parent > div > .bogdrawicon.chickenpaint-palettes > .bogdrawicon.chickenpaint-palette.chickenpaint-palette-tool > .bogdrawicon.chickenpaint-palette-body > ul > li.chickenpaint-toolbar-button.chickenpaint-tool-eraser').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.softeraser', ()=>{
+  $('#chickenpaint-parent > div > .bogdrawicon.chickenpaint-palettes > .bogdrawicon.chickenpaint-palette.chickenpaint-palette-tool > .bogdrawicon.chickenpaint-palette-body > ul > li.chickenpaint-toolbar-button.chickenpaint-tool-soft-eraser').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.blender', ()=>{
+  $('#chickenpaint-parent > div > .bogdrawicon.chickenpaint-palettes > .bogdrawicon.chickenpaint-palette.chickenpaint-palette-tool > .bogdrawicon.chickenpaint-palette-body > ul > li.chickenpaint-toolbar-button.chickenpaint-tool-blender').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.smudge', ()=>{
+  $('#chickenpaint-parent > div > .bogdrawicon.chickenpaint-palettes > .bogdrawicon.chickenpaint-palette.chickenpaint-palette-tool > .bogdrawicon.chickenpaint-palette-body > ul > li.chickenpaint-toolbar-button.chickenpaint-tool-smudge').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.dodge', ()=>{
+  $('#chickenpaint-parent > div > .bogdrawicon.chickenpaint-palettes > .bogdrawicon.chickenpaint-palette.chickenpaint-palette-tool > .bogdrawicon.chickenpaint-palette-body > ul > li.chickenpaint-toolbar-button.chickenpaint-tool-dodge').click()
+})
+$(document).on('click', 'div.bogdrawtools div.bogdrawicon.burn', ()=>{
+  $('#chickenpaint-parent > div > .bogdrawicon.chickenpaint-palettes > .bogdrawicon.chickenpaint-palette.chickenpaint-palette-tool > .bogdrawicon.chickenpaint-palette-body > ul > li.chickenpaint-toolbar-button.chickenpaint-tool-burn').click()
+})
+
+</script>
+abcdefg
+</body>
+
+
+
+</html>

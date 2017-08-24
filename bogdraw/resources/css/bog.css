@@ -1,0 +1,280 @@
+#chickenpaint-parent div.chickenpaint-palette.chickenpaint-palette-textures,
+#chickenpaint-parent div.chickenpaint-palette.chickenpaint-palette-swatches,
+#chickenpaint-parent div.chickenpaint-palette.chickenpaint-palette-stroke,
+#chickenpaint-parent div.chickenpaint-palette.chickenpaint-palette-misc,
+#chickenpaint-parent div.chickenpaint-palette.chickenpaint-palette-tool,
+#chickenpaint-parent div.container-fluid,
+#chickenpaint-parent > nav.navbar
+ {
+  display:none!important
+}
+
+
+body {
+  overflow:hidden;
+}
+
+div[class$="-head"] {
+  display:none
+}
+
+.chickenpaint-palette {
+  border:none!important;
+  transform: scale(.75)!important
+}
+
+.chickenpaint-colorpicker-show {
+  pointer-events:none!important
+}
+
+.chickenpaint {
+    font-family: 'press_startregular'!important;
+
+    font-size: 12px!important;
+}
+
+.chickenpaint-palette-color {
+    left: 663px!important;
+    top: -23px!important;
+    border-right: 15px solid #f6f6f6!important;
+}
+
+.chickenpaint-palette-brush {
+    top: 88px!important;
+    left: 663px!important;
+}
+
+.chickenpaint select.form-control {
+  height:30px!important
+}
+
+#chickenpaint-parent canvas.chickenpaint-brush-preview {
+  display:none!important
+}
+
+.chickenpaint-palette-brush {
+    min-height: 212px;
+}
+
+.chickenpaint-palette-layers {
+    min-height: 212px!important;
+    left: 663px!important;
+    top: 240px!important;
+    height: 212px!important;
+}
+
+.chickenpaint .form-control {
+  font-size: 14px!important
+}
+
+.chickenpaint .checkbox {
+  padding: 0px!important;
+  margin:3px!important;
+}
+
+.chickenpaint .radio label, .chickenpaint .checkbox label {
+    min-height: 20px;
+    padding-left: 20px;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+    font-size: 12px!important;
+    line-height: 1.5!important;
+    /* image-rendering: pixelated; */
+}
+
+.chickenpaint-scrollbar.chickenpaint-scrollbar-horizontal,
+.chickenpaint-scrollbar.chickenpaint-scrollbar-vertical {
+  display:none!important
+}
+
+@font-face {
+    font-family: 'press_startregular';
+    src: url('https://bog.jollo.org/css/fonts/zeldadxttbrk-webfont.woff2') format('woff2'),
+         url('https://bog.jollo.org/css/fonts/zeldadxttbrk-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.bogdrawtoolbox, body {
+  font-family: 'press_startregular';
+  font-weight:bold
+}
+
+body {
+  margin:0;
+}
+.bogdrawtoolbox {
+  display: inline-block;
+  padding: 2px 2px;
+  width: 77px;
+  background: #e9e9e9;
+  user-select:none!important;
+  z-index: 999999;
+  position: absolute;
+  height: 421px!important;
+  overflow: hidden!important;
+}
+
+.bogdrawtools {
+  width:100px;
+  font-size: 0;
+  margin: 0;
+  padding: 0;  
+}
+
+.bogdrawtools div {
+  width:32px;
+  height:32px;
+  border:3px outset white;
+  background:white;
+  display:inline-block; 
+  filter: saturate(135%);
+}
+
+.bogdrawtools span {
+  display:block;
+}
+
+div.bogdrawicon.marquee {
+  background:url(https://bog.jollo.org/draw/icons/icon_marquee.png)
+}
+div.bogdrawicon.move {
+  background:url(https://bog.jollo.org/draw/icons/icon_move.png)
+}
+div.bogdrawicon.pen {
+  background:url(https://bog.jollo.org/draw/icons/icon_pen.png)
+}
+div.bogdrawicon.pencil {
+  background:url(https://bog.jollo.org/draw/icons/icon_pencil.png)
+}
+div.bogdrawicon.airbrush {
+  background:url(https://bog.jollo.org/draw/icons/icon_airbrush.png)
+}
+div.bogdrawicon.watercolor {
+  background:url(https://bog.jollo.org/draw/icons/icon_watercolor.png)
+}
+div.bogdrawicon.fillbucket {
+  background:url(https://bog.jollo.org/draw/icons/icon_fill.png)
+}
+div.bogdrawicon.drop {
+  background:url(https://bog.jollo.org/draw/icons/icon_eyedropper.png)
+}
+div.bogdrawicon.harderaser {
+  background:url(https://bog.jollo.org/draw/icons/icon_harderaser.png)
+}
+div.bogdrawicon.softeraser {
+  background:url(https://bog.jollo.org/draw/icons/icon_softeraser.png)
+}
+div.bogdrawicon.blender {
+  background:url(https://bog.jollo.org/draw/icons/icon_blender.png)
+}
+div.bogdrawicon.smudge {
+  background:url(https://bog.jollo.org/draw/icons/icon_smudge.png)
+}
+div.bogdrawicon.dodge {
+  background:url(https://bog.jollo.org/draw/icons/icon_dodge.png)
+}
+div.bogdrawicon.burn {
+  background:url(https://bog.jollo.org/draw/icons/icon_burn.png)
+}
+div.bogdrawicon.invert {
+  background:url(https://bog.jollo.org/draw/icons/icon_invert.png)
+}
+div.bogdrawicon.blur {
+  background:url(https://bog.jollo.org/draw/icons/icon_blur.png)
+}
+div.bogdrawicon.colornoise {
+  background:url(https://bog.jollo.org/draw/icons/icon_rainbownoise.png)
+}
+div.bogdrawicon.mononoise {
+  background:url(https://bog.jollo.org/draw/icons/icon_monochrome.png)
+}
+div.bogdrawicon.undo {
+  background:url(https://bog.jollo.org/draw/icons/icon_undo.png)
+}
+div.bogdrawicon.redo {
+  background:url(https://bog.jollo.org/draw/icons/icon_redo.png)
+}
+div.bogdrawicon.straightline {
+  background:url(https://bog.jollo.org/draw/icons/icon_straightline.png)
+}
+div.bogdrawicon.freehand  {
+  background:url(https://bog.jollo.org/draw/icons/icon_freestyleline.png)
+}
+
+.bogdrawtools div.bogdrawicon.selected,
+.bogdrawtools div.bogdrawicon:active {
+    box-shadow: inset 2px 2px 5px rgba(251, 255, 0, 0.52), inset 2px 2px 22px rgba(26, 105, 0, 0.34);
+    filter: saturate(300%) invert(1) hue-rotate(180deg);
+}
+
+.spicychicken {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 85px;
+  width: 700px;
+  height: 425px;
+  max-height: 425px!important;
+}
+
+.chickenpaint-palette.chickenpaint-palette-textures {
+  pointer-events:none!important;
+}
+
+.bogdrawlayerbox {
+  display: inline-block;
+  position: absolute;
+  left: 774px;
+  width:130px;
+  top: 406px;
+  z-index: 999999;
+  font-size:0
+}
+
+.bogdrawlayerbox div {
+  height: 14px;
+  width: 14px;
+  border: 2px outset #f7f7f7;
+  border-right: 2px solid #c1c1ce;
+  border-bottom: 2px solid #b2b2bf;
+  background: #e7e7f1;
+  display: inline-block;
+  position:relative;
+}
+
+.bogdrawlayerbox div:active {
+  border: 2px inset #f7f7f7;
+  border-top: 2px solid #c1c1ce;
+  border-left: 2px solid #b2b2bf;
+}
+
+.bogdrawlayerbox div::before {
+position: absolute;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    z-index: 9;
+    top: 1px;
+    font-size: 10px;
+    font-family: arial;
+    color: rgba(0,0,0,.6);
+}
+
+.bogdrawlayernew::before {
+  content:'+'
+}
+.bogdrawlayerdel::before { 
+  content:'-'
+}
+.bogdrawlayerdupe::before {
+  content:'++'
+}
+.bogdrawlayermergedown::before {
+  content:'v'
+}
+.bogdrawlayermergeall::before {
+  content:'V'
+}

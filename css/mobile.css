@@ -61,9 +61,7 @@
     display: none!important
   }
 
-  #videobox {
-    right: -50px
-  }
+
   p img {
     max-width:75vw
   }
@@ -76,7 +74,7 @@
     width:calc(100vw - 88px)!important
   }
   
-  #storedbutton,#trashlock,#storedarea,#uploadbutton,#camerabutton,#binbutton,#mutebutton,#lockbutton,#binbutton,#mutebutton,#favcurrenttrackbutton,#radiobutton,#radioeject,#radiohud {
+  #storedbutton,#trashlock,#storedarea,#uploadbutton,#stickerbutton,#binbutton,#mutebutton,#lockbutton,#binbutton,#mutebutton,#favcurrenttrackbutton,#radiobutton,#radioeject,#radiohud {
     transform:translateX(288px)
   }
   
@@ -112,7 +110,7 @@
   html.unpopped #trashlock,
   html.unpopped #storedarea,
   html.unpopped #uploadbutton,
-  html.unpopped #camerabutton,
+  html.unpopped #stickerbutton,
   html.unpopped #binbutton,
   html.unpopped #mutebutton,
   html.unpopped #lockbutton,
@@ -132,5 +130,43 @@
   #sendbutton,#popbutton {
     display:inline-block
   }
+  #content, p {
+    font-size:10px!important
+  }
+  span.nick {
+    font-size:8px!important;
+  }
+  span img {
+    image-rendering:optimizeQuality;
+    height:10px!important;
+    margin-left:1px!important;
+  }
+  #content p {
+    margin:5px!important;
+  }
+  #content img {
+    max-height:185px
+  }
+  #logo {
+    display:none
+  }
+  html {
+    width:100vw!important;
+  }
+  * {
+    overflow-x:hidden!important
+  }
+  img {
+    image-rendering:pixelated!important;
+  }
+
+  html body #stickerbox {
+    border:none;
+    overflow:hidden!important;
+    width:100vw!important;
+  }
+
+  
+
 
 }

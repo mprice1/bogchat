@@ -60,6 +60,9 @@ function bogscript(a,b) {
     bin: () => {
       bintoggle()
     },
+    draw: () => {
+      bog.draw.init()
+    },
     //fidget: () => {
     //  // init fidget spinner
     //  document.write('<link rel="stylesheet" href="https://bog.jollo.org/css/fidget.css" type="text/css">')
@@ -150,6 +153,10 @@ function bogscript(a,b) {
     },
     jfkjfk: () => {
       $('body').css('background','url("http://i.imgur.com/wkmQwuq.png")')
+    },
+    abacabb: () => {
+      clearInterval(updatestylesheetinterval)
+      $('html').toggleClass('virtualboy')
     },
     crawl: () => {
       live.clear()

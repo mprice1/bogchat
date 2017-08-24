@@ -1,274 +1,41 @@
-.drawing-board-control-navigation-back {
-    background: url(./image/undo.png);
-    width: 35px;
-    height: 35px;
-    background-color: #ddffdc;
-    background-size: 25px 30px;
-    background-position: 1px -4px;
-    border: 3px outset #aaffc5;
-    font-size: 0;
-    background-repeat: no-repeat;
+html.draw #content {
+  bottom:420px;
+  border: 5px solid #dedede;
+  border-bottom: 3px solid #dedede;  
 }
 
-.drawing-board-control-navigation-back.active {
-    background-color: #ddffdc;
-    border: 3px inset #ccc;
-}
-
-.drawing-board-control-drawingmode-filler-button {
-background: url(./image/joel-filler.png);
-    position: absolute;
-    width: 35px;
-    top: 97px;
-    left: 0px;
-    height: 35px;
-    background-color: #e7e0ea;
-    background-size: 25px 30px;
-    background-position: 1px -4px;
-    border: 3px outset #f5e7ff;
-    font-size: 0;
-    background-repeat: no-repeat;
-}
-
-.drawing-board-control-drawingmode-filler-button.active {
-    background-color: #e7e0ea;
-    border: 3px inset #f5e7ff;
-}
-
-.drawing-board-control-navigation-reset {
-    background: url(./image/bomb.gif);
-    width: 35px;
-    height: 35px;
-    background-color: #ddf1ff;
-    background-size: cover;
-    border: 3px outset cyan;
-    font-size: 0;
-}
-
-.drawing-board-control-navigation-reset.active {
-    background-color: #ddf1ff;
-    border: 3px inset #ccc;
-}
-
-.drawing-board-control-drawingmode-pencil-button {
-    background: url(./image/pencil.png);
-    width: 35px;
-    height: 35px;
-    background-color: #fbffd4;
-    background-size: cover;
-    border: 3px outset white;
-}
-
-.drawing-board-control-drawingmode-pencil-button.active {
-    background-color: #fbffd4;
-    border: 3px inset #ccc;
-}
-
-.drawing-board-control-drawingmode-eraser-button {
-    background: url(./image/eraser.png);
-    width: 35px;
-    height: 35px;
-    background-color: #fdd;
-    background-size: cover;
-    border: 3px outset white;
-}
-
-.drawing-board-control-drawingmode-eraser-button.active {
-    background-color: #fdd;
-    border: 3px inset #ccc;
-    }
-    
-.drawing-board-control-navigation-forward, .drawing-board-control-download-button {
-    display:none
-}
-
-
-
-.drawing-board-control-colors { font-size: 0; line-height: 0; }
-
-.drawing-board-control-colors-current { 
-cursor: pointer;
-    display: block;
-    border: 3px inset #ccc;
-    height: 29px;
-    width: 29px;
-    left: 35px;
-    position: absolute;
-    top: 97px;
-  }
-
-.drawing-board-control-colors-rainbows { display: inline-block; margin-left: 5px; position: absolute; left: 0; top: 33px; margin-left: 0; z-index: 100; width: 250px; height: auto; padding: 4px; }
-
-.drawing-board-control-colors-rainbow { height: 18px; }
-
-.drawing-board-control-colors-picker:first-child { margin-right: 5px; }
-
-.drawing-board-control-colors-picker { display: inline-block; width: 18px; height: 18px; cursor: pointer; }
-
-.drawing-board-control-colors-picker[data-color="rgba(255, 255, 255, 1)"] { width: 16px; height: 17px; border: 1px solid #ccc; border-bottom: none; }
-
-.drawing-board-control-colors-picker:hover { width: 16px; height: 16px; border: 1px solid #555; }
-
-.drawing-board-control-colors-rainbows {
-  opacity:1;
-  transition:opacity .2s ease-out;
-      position: absolute;
-    top: 120px;
-}
-
-.drawing-board-utils-hidden {
-  opacity:0;
-  pointer-events:none!important;
-}
-
-/* */
-
-
-
-
-/* drawing-specific */
-
-body.draw #content {
-  bottom: 212px;
-}
-
-body.draw #drawingboard {
-  opacity: 1;
-  pointer-events: auto;
+#bogdraw {
+  transition:all .5s ease-in-out;
+  height:0;
+  overflow:hidden;
+  bottom:40px;
+  width:100vw;
+  position:absolute;
   
 }
 
-
-body.draw #input {
-  padding-top: 215px;
+html.draw #bogdraw {
+  height: 425px;
+  background-color: rgba(238, 237, 240, 0.59);
 }
 
-html.day body.draw #input {
-  border: 3px solid #7cffe5;
+@font-face {
+  font-family: 'press_startregular';
+  src: url('https://bog.jollo.org/css/fonts/zeldadxttbrk-webfont.woff2') format('woff2'),
+       url('https://bog.jollo.org/css/fonts/zeldadxttbrk-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
-html.night body.draw #input {
-  border: 3px solid rgba(200, 76, 255, 0.25);
+.bogdrawtoolbox, .spicychicken *, #bogdraw {
+  font-family: 'press_startregular';
+  font-weight:bold
 }
 
-body.draw #msg::before {
-  content: '';
-  left: 543px;
-  opacity: 1;
-  display: block;
-  width: 2px;
-  height: calc(100% - 6px);
-  top: 3px;
-  position: absolute;
-  z-index: 1;
-  pointer-events: auto;
+html.draw * {
+  user-select: none!important;
 }
 
-body.draw #msg::after {
-  opacity: 1;
-  content: '';
-  height: 2px;
-  width: calc(100% - 234px);
-  position: absolute;
-  bottom: 35px;
-  z-index: 9999000099;
-  left: 3px;
-  pointer-events: none;
-}
-
-html.day body.draw #msg::before {
-  content: '';
-  background: #f8e4fb;
-}
-
-html.night body.draw #msg::before {
-  content: '';
-  background: rgba(255, 108, 0, 0.38);
-}
-
-html.day body.draw #msg::after {
-  background: #ffeed8;
-}
-
-html.night body.draw #msg::after {
-  background: rgba(202, 255, 0, 0.44);
-}
-
-#drawingboard {
-  opacity: 0;
-  pointer-events: none;
-  width: 452px;
-  height: 205px!important;
-  position: absolute;
-  top: 5px;
-  left: 10px;
-  z-index: 999999999999999;
-  transition: all .4s ease-out
-  transform: scale(1)
-}
-
-#drawingboard .drawing-board-canvas-wrapper {
-  border: none;
-  margin: 0;
-  position: absolute;
-  left: 81px;
-  width: 389px;
-  height: 195px;
-  top: 5px;
-}
-
-#drawingboard input[type="range"] {
-  width: 65px;
-}
-
-/* */
-
-img.blobble {
-  animation:1s blobbles linear infinite
-}
-
-@keyframes blobbles {
-  0% {filter: hue-rotate(180deg) saturate(3250%)}
-  100% {filter:hue-rotate(360deg)}
-}
-
-html.night .drawing-board-control-navigation-back.active {
-    background-color: rgba(221, 255, 220, 0.18)!important;
-    border: 3px inset rgba(0, 245, 78, 0.77)!important;
-}
-
-html.night .drawing-board-control-navigation-reset {
-    background-color: rgba(221, 241, 255, 0.39)!important;
-    border: 3px outset rgba(0, 39, 255, 0.91)!important;
-}
-
-html.night .drawing-board-control-drawingmode-pencil-button.active {
-    background-color: rgba(255, 212, 212, 0.26)!important;
-    border: 3px inset #c11fce!important;
-}
-
-html.night .drawing-board-control-drawingmode-pencil-button {
-    background-color: rgba(255, 212, 212, 0.26)!important;
-    border: 3px outset #c11fce!important;
-}
-
-html.night .drawing-board-control-drawingmode-eraser-button {
-    background-color: rgba(255, 221, 221, 0.23)!important;
-    border: 3px outset rgb(171, 125, 125)!important;
-}
-html.night .drawing-board-control-drawingmode-eraser-button.active {
-    background-color: rgba(255, 221, 221, 0.23)!important;
-    border: 3px inset rgb(171, 125, 125)!important;
-}
-html.night .drawing-board-control-drawingmode-filler-button {
-    background-color: #4b3654!important;
-    border: 3px outset #534b58!important;
-}
-html.night .drawing-board-control-drawingmode-filler-button.active {
-    background-color: #4b3654!important;
-    border: 3px inset #534b58!important;
-}
-html.night .drawing-board-control-drawingmode-eraser-button.active {
-    background-color: #4b3654!important;
-    border: 3px inset #534b58!important;
+.bogdrawpublish.disabled {
+  pointer-events:none!important
 }

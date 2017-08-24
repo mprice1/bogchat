@@ -1,0 +1,113 @@
+<!doctype html>
+<html class="night draw">
+<head>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="./css/bogchat.css" type="text/css">
+<link rel="stylesheet" href="./css/bar.css" type="text/css">
+</head>
+<body>
+  <div id="bogchat">
+    <div id="main">
+      <div id="logo"></div>
+      <div id="messages"></div>
+      <div id="whatshot"></div>
+      <div id="crawl"></div>
+      <!--
+      <div id="radio">
+        <div id="radioeject" class="ejected closed">
+          <div id="radioejectdisplay">
+            <div id="radioejectdisplaycontent">
+            </div>
+          </div>
+        </div>
+        <div id="radiohud">
+          <div id="radioled">888:88</div>
+          <div id="radioledactive"></div>
+          <div id="radiotext">XXXXXXXXXXXXXXXXXXXXXXXX</div>
+          <div id="radiosubtext"></div>
+          <div id="radioejection">&#9167;</div>
+          <div id="radiosource">&#9911;</div>
+          <div id="radiocontrols">
+            <span data-id="1" class="radiocontrol">_</span> 
+            <span data-id="2" class="radiocontrol">_</span> 
+            <span data-id="3" class="radiocontrol">_</span> 
+            <span data-id="4" class="radiocontrol">_</span> 
+            <span data-id="5" class="radiocontrol">_</span> 
+          </div>
+          <div id="radioqueueloading">Q</div>
+          <div id="radiominremain">x?</div>
+        </div>
+      </div>
+      <video id="stickervideo" width="123" height="92" autoplay></video>
+      <video id="stickerpicture" width="400" height="300" autoplay></video>
+      <canvas id="stickerpicturecanvas" width="400" height="300" style="display:none"></canvas>
+      <canvas id="stickervideocanvas" width="123" height="92" style="display:none"></canvas>
+      -->
+    </div>
+    <div id="search"></div>
+    <div id="bar">
+      <div id="modem">
+        <div class="led send"></div>
+        <div class="led receive"></div>
+        <div class="led power"></div>
+      </div>
+      <span id="status"></span>
+      <!-- <input type="text" spellcheck=false id="input" disabled="disabled" /> -->
+      <input type="text" spellcheck=false id="input" />
+      <div id="quickstoragebuttonarea">
+
+      <div id="trashlock"></div>
+      <div id="storedarea">
+      <div id="storedcontainer"></div>
+      <input id="storedinput" type="text">
+      </div>
+      </div>  
+      <div id="bogbuttons">
+
+        <div class="bogbutton" id="storedbutton" ondragenter="dragpopup()"></div>
+        <div class="bogbutton" id="uploadbutton"></div>
+        <div class="bogbutton" id="stickerbutton"></div>
+        <div class="bogbutton" id="lockbutton"></div>
+        <div class="bogbutton" id="binbutton"></div>
+        <div class="bogbutton" id="mutefavbuttonarea">
+          <div id="mutebutton"></div>
+          <div id="favcurrenttrackbutton"></div>
+          <div id="radiobutton"></div>
+        </div>
+        <!-- <div id="sendbutton"></div> -->
+        <!-- <div id="popbutton"></div>     -->
+      </div>
+    </div>
+    <div id="bin">
+      <div id="newbinbutton"></div>
+      <div id="backupbutton"></div>
+      <div id="togglefavedbogchatitemsbutton"></div>
+      <div id="togglefavedradioplaylistbutton"></div>
+      <div id="deletebinbutton"></div>
+      <div id="favbintogglebutton"></div>
+      <div id="biggerbinbutton"></div>
+      <div id="binarea"></div>
+      <div id="favarea">
+        <div id="favareacontainer"></div>
+        <div id="shufflefavarea" title="shuffle fav area"></div>
+        <div id="togglerapidtosave" title="toggle rapid-fav-to-save"></div>
+      </div>
+    </div>  
+  </div>
+  <input id="fileinput" accept="image/*" type="file" onchange="pushfile()">
+      <div id="zoo" class="empty">
+        <div id="listen">
+          <iframe width="30" height="15" src="https://www.youtube.com/embed/8myYyMg1fFE?&amp;rel=0&amp;loop=1&amp;showinfo=0&amp;disablekb=1&amp;modestbranding=1&amp;hd=1&amp;autohide=1&amp;color=white&amp;playlist=8myYyMg1fFE" frameborder="0" allowfullscreen=""></iframe>
+        </div>
+        <button id="leavezoo">leave zoo</button>
+        <div id="exhibit"></div>
+      </div>   
+</body>
+
+<script>
+// livereloadx ~ localhost
+if (window.location.origin == "http://localhost:8082") {
+  document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=2"></' + 'script>')
+}
+</script>
+</html>

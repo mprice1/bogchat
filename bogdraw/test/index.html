@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<script type="text/javascript">
+	/* Check for native pointer event support before PEP adds its polyfill */
+	if (window.PointerEvent) {
+		window.hasNativePointerEvents = true;
+	}
+</script>
+
+<script src="../lib/raf.js"></script>
+<script src="../lib/es6-promise.min.js"></script>
+<script src="../lib/jquery-2.2.1.min.js"></script>
+<script src="../lib/pep.min.js"></script>
+<script src="../lib/pako-1.0.1-1.js"></script>
+<script src="../lib/keymaster.js"></script>
+<script src="../lib/EventEmitter.min.js"></script>
+<script src="../lib/FileSaver.min.js"></script>
+<script src="../lib/bootstrap.min.js"></script>
+
+<style>
+
+</style>
+<style>
+
+</style>
+<link rel="stylesheet" type="text/css" href="../resources/css/chickenpaint.css">
+</head>
+<body>
+<div id="bogdraw">
+  <div class="bogdrawtoolbox">
+    <div class="bogdrawtools">
+      <div class="bogdrawicon bogdrawseltool marquee"></div>
+      <div class="bogdrawicon bogdrawseltool move"></div>
+      <div class="bogdrawicon bogdrawseltool pen selected"></div>
+      <div class="bogdrawicon bogdrawseltool pencil"></div>
+      <div class="bogdrawicon bogdrawseltool airbrush"></div>
+      <div class="bogdrawicon bogdrawseltool watercolor"></div>
+      <div class="bogdrawicon bogdrawseltool fillbucket"></div>
+      <div class="bogdrawicon bogdrawseltool drop"></div>
+      <div class="bogdrawicon bogdrawseltool harderaser"></div>
+      <div class="bogdrawicon bogdrawseltool softeraser"></div>
+      <div class="bogdrawicon bogdrawseltool blender"></div>
+      <div class="bogdrawicon bogdrawseltool smudge"></div>
+      <div class="bogdrawicon bogdrawseltool dodge"></div>
+      <div class="bogdrawicon bogdrawseltool burn"></div>
+      <div class="bogdrawicon invert"></div>
+      <div class="bogdrawicon blur"></div>
+      <div class="bogdrawicon colornoise"></div>
+      <div class="bogdrawicon mononoise"></div>
+      <div class="bogdrawicon undo"></div>
+      <div class="bogdrawicon redo"></div>
+      <div class="bogdrawicon straightline"></div>
+      <div class="bogdrawicon freehand selected"></div>  
+    </div>
+  </div>
+  <div class="bogdrawlayerbox">
+    <div class="bogdrawlayernew"></div>
+    <div class="bogdrawlayerdel"></div>
+    <div class="bogdrawlayerdupe"></div>
+    <div class="bogdrawlayermergedown"></div>
+    <div class="bogdrawlayermergeall"></div>
+  </div>
+
+  <div class="spicychicken">
+    <div id="chickenpaint-parent"></div>
+  </div>
+</div>
+<script src="../resources/js/chickenpaint.js"></script>
+<script src="index.js"></script>
+</body>
+</html>

@@ -57,7 +57,7 @@ function favrequest(e) {
   console.log(e)
 }
 
-function addMessage(locale, author, message, color, id, zoo) {
+function addMessage(locale, author, message, color, id, zoo, draw) {
   var author = decodeURIComponent(author)
   var message = decodeURIComponent(message)
   userlist = uniquepush(author, userlist)
@@ -120,8 +120,12 @@ function addMessage(locale, author, message, color, id, zoo) {
         
       } )[author] || author.substr(0,16)
       
-      
-      $('#content').append(`<p data-nick="${btoa(author.substr(0,16))}" data-id="${id}"><span data-locale="${locale}" class="nick" style="color:${color}">${author}</span>: ${richtext(message)}</p>`)
+      if (draw) {
+        $('#content').append(`<p data-nick="${btoa(author.substr(0,16))}" data-id="${id}"><span data-locale="${locale}" class="nick" style="color:${color}">${author}</span>: <img src="http://img.bog.jollo.org:8003/${draw}.png" style="max-width:700px!important; max-height:425px!important; width:700px!important; height:425px!important"></p>`)        
+      }
+      else {
+        $('#content').append(`<p data-nick="${btoa(author.substr(0,16))}" data-id="${id}"><span data-locale="${locale}" class="nick" style="color:${color}">${author}</span>: ${richtext(message)}</p>`)
+      }
     }
   }
 }
