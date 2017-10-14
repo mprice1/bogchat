@@ -116,7 +116,8 @@ function addMessage(locale, author, message, color, id, zoo, draw) {
         "winkyface" : author + '<img src="https://bog.jollo.org/tiny/winkyface.gif">',
         "redguts" : author + '<img src="https://bog.jollo.org/tiny/redguts.gif">',
         "Samantha" : author + '<img src="https://bog.jollo.org/tiny/samantha.gif">',
-        "frederick" : author + '<img src="https://bog.jollo.org/tiny/frederick.png">'
+        "frederick" : author + '<img src="https://bog.jollo.org/tiny/frederick.png">',
+        "ohgod" : author + '<input type="checkbox">'
         
       } )[author] || author.substr(0,16)
       
